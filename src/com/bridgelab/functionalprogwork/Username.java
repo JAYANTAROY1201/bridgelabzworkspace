@@ -1,3 +1,7 @@
+package com.bridgelab.functionalprogwork;
+
+import com.bridgelabz.utility.Utility;
+
 /******************************************************************************
  * 
  *  Purpose: To print “Hello <<UserName>>, How are you?” where <<UserName>> should be replace with user name.
@@ -9,21 +13,19 @@
  ******************************************************************************/
 
 
-package com.bridgelab.functionalprogwork;
-
-
-import com.bridgelabz.utility.Utility;
-
-public class Username{
-	
-
-	public static void main(String[] args) {
+public class Username
+{
+	public static void main(String[] args) 
+	{
+		String user="";
 		Utility util=new Utility();
-		System.out.println(util.replaceUserName());
-		
-		}
-		
-
-	}
+		System.out.println("enter user name:");
+		user=util.readString();
+		if(user.length()>3) 
+		{
+		System.out.println(util.replaceUserName(user));
+	    }
+    }
+}
 
 

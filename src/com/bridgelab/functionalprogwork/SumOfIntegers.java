@@ -3,28 +3,20 @@ package com.bridgelab.functionalprogwork;
 import com.bridgelabz.utility.Utility;
 
 /**
- *  Purpose: To find prime factors of a given number
+ *  Purpose: To find when sum of integers equals to zero
  *
  *  @author  Jayanta Roy
  *  @version 1.0
  *  @since   17-05-2018
  *
  */
+public class SumOfIntegers {
 
-public class PrimeFactor 
-{
 	public static void main(String[] args) 
 	{
-		int num;
 		Utility util=new Utility();
-		System.out.println("Enter your number:");
-		num=util.readInteger();
-		util.findPrimeFactor(num);   
-     }
+		util.sum_of_num(util.create_1d_array());
+	}
+		
+
 }
-
-	
-
-
-
-

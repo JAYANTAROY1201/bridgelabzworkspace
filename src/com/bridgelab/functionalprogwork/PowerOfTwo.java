@@ -2,11 +2,18 @@ package com.bridgelab.functionalprogwork;
 
 import com.bridgelabz.utility.Utility;
 
-public class PowerOfTwo {
+/**
+ *  Purpose: To find the table of power of two
+ *  @author  Jayanta Roy
+ *  @version 1.0
+ *  @since   17-05-2018
+ *
+ */
 
-	
-
-	public static void main(String[] args) {
+public class PowerOfTwo 
+{
+	public static void main(String[] args)
+	{
 	   int num;
 	   Utility util=new Utility();
 	   num=Integer.parseInt(args[0]);

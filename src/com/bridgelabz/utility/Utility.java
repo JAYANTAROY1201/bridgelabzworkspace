@@ -21,17 +21,31 @@ public class Utility {
 		sc.close();
 		return str;
 	}
+	/*
+	 * create_1d_array method to create 1d array
+	 */
+	
+	public static int[] create_1d_array() {
+		int size;
+		System.out.println("Enter size of array");
+		 size=readInteger();
+		 int [] a= new int[size];
+		 for(int i=0;i<size;i++) {
+			 System.out.println("Enter value for a["+i+"]  :");
+			 a[i]=readInteger();
+	}
+		 return a;
+	}
 	
 	/*
 	 * replaceUserName method to replace a template with given user name
 	 */
-	public static String replaceUserName()
+	public static String replaceUserName(String user)
 	{   
 		String template="Hello <<UserName>>, How are you?";
-        String user="", out="";
+        String out="";
 		
-		System.out.println("enter user name:");
-		user=readString();
+		
 		
 		if(user.length()>3) {	
 		
@@ -59,25 +73,24 @@ public class Utility {
 	 * findFlipPercent method to finding the percent of head and tail
 	 */
 	
-	public static void findFlipPercent() {
+	public static void findFlipPercent(int no_of_flip) {
 		
-		 int mFlip,mHead=0, mTail=0,mHeadPercent, mTailPercent;
-		 System.out.println("enter no of time the coin will be flipped:");
-		 mFlip = readInteger();  
-		 for (int i = 0; i < mFlip; i++) {
+		 int head=0, tail=0,headPercent, tailPercent;
+		 
+		 for (int i = 0; i < no_of_flip; i++) {
 		     if(Math.random()<0.5) {
-		        mTail++;
+		    	 tail++;
 		     }
 		     else {
-		    	mHead++;
+		    	 head++;
 		     }
 			
 		  }
-		  mHeadPercent=(mHead*100)/mFlip;
-		  mTailPercent=(mTail*100)/mFlip;
+		 headPercent=(head*100)/no_of_flip;
+		 tailPercent=(tail*100)/no_of_flip;
 		  
-		  System.out.println("Head percentage is :"+ mHeadPercent);
-		  System.out.println("Tail percentage is :"+ mTailPercent);	
+		  System.out.println("Head percentage is :"+ headPercent);
+		  System.out.println("Tail percentage is :"+ tailPercent);	
 		}
 	
 
@@ -86,23 +99,20 @@ public class Utility {
 	 * checkLeapYear method to find a year is leap year or not
 	 */
 	
-	 public static void checkLeapYear(){
+	 public static void checkLeapYear(int year){
 		 
-		int year;
 		String LEAP_YEAR= " is a Leap Year";
 		String NOT_LEAP_YEAR= " is not a Leap Year";
 	     
-	    System.out.println("Enter year which you want to check :");
-	    System.out.println("NOTE: Year must be greater than or equals to 1582");
-	    year=readInteger();
+	    
 	    if(year<1582){
 	       System.out.println("Invalid year");}
 	    else{ 
-	      if((year%100==0 && year%400==0)||(year%100 !=0 && year%4==0)){
-	         System.out.println(year+LEAP_YEAR);
-	      }
-	      else{
-	         System.out.println(year+NOT_LEAP_YEAR);
+	       if((year%100==0 && year%400==0)||(year%100 !=0 && year%4==0)){
+	          System.out.println(year+LEAP_YEAR);
+	       }
+	       else{
+	          System.out.println(year+NOT_LEAP_YEAR);
 	      }     
 	   }
 	 }
@@ -131,15 +141,10 @@ public class Utility {
 	 /*
 	 * findHarmonic method to print nth harmonic progression
 	 */
-	 public void findHarmonic() {
+	 public void findHarmonic(int num) {
 		 
-		int num;
-		double out=0.0;
-
-		System.out.println("Enter your number:");
-		num=readInteger();
-		  
-			
+		
+		double out=0.0;	
 		while(num>0) {
 			out=out+(double)1/num;
 			num--;
@@ -154,28 +159,32 @@ public class Utility {
 	 /*
 	 * findPrimeFactor method to find the prime factors of a given number
 	 */ 
-	 public void findPrimeFactor() {
+	 public void findPrimeFactor(int num) 
+	 {
 		 
-		    int num,temp;
-			
-			System.out.println("Enter you number:");
-			num=readInteger();
+		    int temp;
 			temp=num;
+			
 			ArrayList<Integer> factor = new ArrayList<Integer>();
-			for (int i = 2; i*i <= num; i++) {
-			    while (num % i == 0) {
+			for (int i = 2; i*i <= num; i++) 
+			{
+			    while (num % i == 0)
+			    {
 			        factor.add(i);
 			        num = num/i;
 			    }
 			}
-			if (num > 1) {
+			
+			if (num > 1) 
+			{
 				factor.add(num);
 			}
 			System.out.println("Prime factor(s) of "+temp+":");
-			for(Integer i:factor) {
+			for(Integer i:factor) 
+			{
 				System.out.print(i+" ");
 			}
-		}
+	}
 	
 	 
 	 
@@ -183,16 +192,10 @@ public class Utility {
 	 * playGambler method to find win and loss percentage of a gambler game
      */
 	 
-	 public void playGambler() {
+	 public void playGambler(int stake,int goal,int no_of_game) {
 		 
-		 int stake, goal, no_of_game, win=0,loss=0,percentWin,percentLoss;
-		   System.out.println("Enter your stake:");
-		   stake=readInteger();
-		   System.out.println("Enter your goal:");
-		   goal=readInteger();
-		   System.out.println("Enter no of times you are going to play:");
-		   System.out.println("chances must be equal or greater than:"+(goal-stake+5));
-           no_of_game=readInteger();
+		 int win=0,loss=0,percentWin,percentLoss;
+		   
 		    
 		   for(int i=0;i< no_of_game; i++) {
 			  
@@ -215,7 +218,7 @@ public class Utility {
 			  
 		   //end of outer loop
 		   percentWin=(win*100)/(win+loss);
-		   percentLoss=(loss*100)/no_of_game;
+		   percentLoss=(loss*100)/(win+loss);
 		   
 		   System.out.println("No. of winning:"+win);
 		   System.out.println("Percentage. of winning:"+percentWin);
@@ -227,60 +230,60 @@ public class Utility {
 	 /*
 	* coupon_generator method to find how many random numbers are needed to generate a coupon
 	 */
-	 public void coupon_generator() {
+	 public void coupon_generator(int length_of_coupon)
+	 {
 		 
-		 int length_of_coupon,code,codes,count=0;;
-         System.out.println("Enter the length of coupon:");
-		 length_of_coupon= readInteger();
+		 int code,codes,count=0;;
+         
 		 ArrayList<Integer> coupon= new ArrayList<Integer>();
 		 System.out.println("Enter distinct coupon codes:");
 		 
-		 for(int j=0;coupon.size()<length_of_coupon; j++){
+		 for(int j=0;coupon.size()<length_of_coupon; j++)
+		 {
 		    code= readInteger();
-			if(!coupon.contains(code)) {
+			if(!coupon.contains(code)) 
+			{
 			   coupon.add(code);
 			}
-		}
+		 }
 			
 		    Random rand = new Random();
 
-			for(int i=0;i<coupon.size();i++) {
+			for(int i=0;i<coupon.size();i++) 
+			{
 				 codes=coupon.get(i);
-				 while(codes!= rand.nextInt(10)) {
-				 count++;
-				}	
+				 while(codes!= rand.nextInt(10))
+				 {
+				   count++;
+				 }	
 			}
 			System.out.println("You need total "+count+" random numbers to generate this coupon");		
-			}
+	 }
 	 
 	 
 	 /*
 	*  sum_of_num method to find when the summation gives zero
 	 */ 
 	 
-	 public void sum_of_num(){
-		 int size,count=0;
-		
-		 System.out.println("Enter size of array");
-		 size=readInteger();
-		 int [] a= new int[size];
-		 for(int i=0;i<size;i++) {
-			 System.out.println("Enter value for a["+i+"]  :");
-			 a[i]=readInteger();
-		 }
+	 public void sum_of_num(int[]a){
+		 int count=0;
 		 
-		 for(int j=0;j<a.length;j++) {
-				for(int k=j+1;k<a.length;k++) {
-					for(int l=k+1;l<a.length;l++) {
-						if(a[j]+a[k]+a[l]==0) {
+		 
+		 for(int j=0;j<a.length;j++) 
+		 {
+			for(int k=j+1;k<a.length;k++) 
+				{
+				   for(int l=k+1;l<a.length;l++)
+					 {
+						if(a[j]+a[k]+a[l]==0) 
+						{
 							count++;
 							System.out.println("Sum of "+a[j]+","+a[k]+" & "+a[l]+" is 0");
 						}
-					}
+					 }
 				}
 		 }
-		 System.out.println("Total "+count+" triplets found");
-		 	 
-	 }
+		 System.out.println("Total "+count+" triplets found");	 	 
+	  }
 	
 }
