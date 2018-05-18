@@ -14,7 +14,7 @@ import com.bridgelabz.utility.Utility;
 public class GamblerGame {
    public static void main(String[] args) 
    {
-	  int stake, goal, no_of_game;
+	  int stake, goal, noOfGame;
 	  
 	  Utility util=new Utility();
 	  
@@ -26,9 +26,9 @@ public class GamblerGame {
 	  
 	  System.out.println("Enter no of times you are going to play:");
 	  System.out.println("chances must be equal or greater than:"+(goal-stake+5));
-      no_of_game=util.readInteger();
+	  noOfGame=util.readInteger();
       
-	  util.playGambler(stake, goal, no_of_game);
+	  util.playGambler(stake, goal, noOfGame);
 
 	}
 }

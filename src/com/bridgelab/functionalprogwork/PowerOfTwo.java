@@ -18,7 +18,7 @@ public class PowerOfTwo
 	   Utility util=new Utility();
 	   num=Integer.parseInt(args[0]);
 	   if(num<31)
-	   util.find_PowerOfTwo(num);
+	   util.findPowerOfTwo(num);
 	   
 
 	}

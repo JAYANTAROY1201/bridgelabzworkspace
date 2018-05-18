@@ -16,11 +16,11 @@ import com.bridgelabz.utility.Utility;
 public class FlipCoin {
 	
 	public static void main(String[] args) {
-	   int no_of_flip;
+	   int noOfFlip;
 	   Utility util=new Utility();
 	   System.out.println("enter no of time the coin will be flipped:");
-	   no_of_flip = util.readInteger(); 
-	   util.findFlipPercent(no_of_flip);
+	   noOfFlip = util.readInteger(); 
+	   util.findFlipPercent(noOfFlip);
 	   
 
 	}

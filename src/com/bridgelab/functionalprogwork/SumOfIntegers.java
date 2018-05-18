@@ -15,7 +15,7 @@ public class SumOfIntegers {
 	public static void main(String[] args) 
 	{
 		Utility util=new Utility();
-		util.sum_of_num(util.create_1d_array());
+		util.sumOfNum(util.createOneDimensionalArray());
 	}
 		
 

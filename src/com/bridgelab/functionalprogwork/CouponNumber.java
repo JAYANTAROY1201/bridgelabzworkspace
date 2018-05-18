@@ -15,12 +15,12 @@ import com.bridgelabz.utility.Utility;
 public class CouponNumber {
 public static void main(String[]args) 
 {   
-	int length_of_coupon;
+	int lengthOfCoupon;
 	Utility util=new Utility();
 	System.out.println("Enter the length of coupon:");
-	length_of_coupon= util.readInteger();
+	lengthOfCoupon= util.readInteger();
 	
-	util.coupon_generator(length_of_coupon);
+	util.generatorCouponCode(lengthOfCoupon);
 	}
 	
 
