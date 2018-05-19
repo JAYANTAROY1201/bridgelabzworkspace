@@ -459,12 +459,12 @@ public class Utility {
 	  */	 
 	 
 	 
-public static void StringPermutation(String inputString)
+public static void stringPermutation(String inputString)
 	    {
-	        StringPermutation("", inputString);
+	        stringPermutation("", inputString);
 	    }
 	     
-private static void StringPermutation(String permute, String inputString)
+private static void stringPermutation(String permute, String inputString)
 	    {    
 	        if(inputString.length() == 0)
 	        {
@@ -474,10 +474,207 @@ private static void StringPermutation(String permute, String inputString)
 	        {
 	            for (int i = 0; i < inputString.length(); i++)
 	            {    
-	                StringPermutation(permute+inputString.charAt(i), inputString.substring(0, i)+inputString.substring(i+1, inputString.length()));
+	                stringPermutation(permute+inputString.charAt(i), inputString.substring(0, i)+inputString.substring(i+1, inputString.length()));
 	            }
 	        }
 	    }
+
+//____________________________________________________________________________________________________________________________________________________
+
+
+public static char[] initializeBoard( char[] board) 
+{
+	   
+	for (int i = 0; i < 9; i++)
+	  { 
+		board[i] = ' ';       
+	  }
+	return board;
+ }
+
+ public static void printBoard(char[] board) {
+        
+	 System.out.println();
+     System.out.println();
+     System.out.println("---------------------");
+        for (int i = 0; i < 9; i++) 
+        {  int count=0;
+        	for (int j=i;j<9;j++) 
+        	{
+        	count++;
+        	i=j;
+        	System.out.print("|  "+board[i]+"  |");
+      
+        	if(count>2)
+        		break;
+        	}
+        	System.out.println();
+        	System.out.println("---------------------");
+        	
+           
+        }
+    }
+
+ /*
+  * to check equality of characters
+  */
+ private static boolean checkEqual(char c1, char c2, char c3) 
+ {
+	 return ((c1!=' ') && (c1==c2) && (c2==c3)); 
+ }
+ 
+ /*
+  * to check equality of rows
+  */
+ private static boolean rowWin(char[]board) {
+	 if((checkEqual(board[0], board[1],board[2])) || (checkEqual(board[3],board[4],board[5])) || (checkEqual(board[6],board[7],board[8])))
+        {
+			  return true;
+		
+	      }
+	 return false;
+ }
+ 
+ 
+ /*
+  * to check equality of columns
+  */
+ private static boolean colWin(char[]board) {
+	  
+  if((checkEqual(board[0], board[3],board[6])) || (checkEqual(board[1],board[4],board[7])) || (checkEqual(board[2],board[5],board[8])))
+   {
+     return true;
+
+   }
+  return false;
+ }
+ 
+ 
+ /*
+  * to check equality of diagonal
+  */
+ private static boolean diagonalWin(char[]board) {
+	 
+		if((checkEqual(board[0], board[4],board[8]))||(checkEqual(board[2], board[4],board[6])) )
+		{
+			return true;
+		}
+	 return false;
+ }
+ 
+ 
+ /*
+  * to check winning
+  */
+ public static boolean checkForWin(char[]board) {
+	 return (rowWin(board)||colWin(board)||diagonalWin(board));
+ }
+ 
+
+ /*
+  * to check whether all position is occupied
+  */ 
+ public static boolean occupiedPosition(char[] board)
+ {
+	 for(int i=0;i<board.length;i++)
+	 {
+		 if(board[i]==' ') 
+		 {
+			 return false;
+		 }
+	 }
+	 return true;
+ }
+
+ 
+ public static void myTurn(char[] board) 
+ {
+	 ArrayList<Integer> place= new ArrayList<Integer>();
+	 for(int i=0;i<9;i++)
+	 {
+		 if(board[i]==' ')
+		 {
+			 place.add(i);
+		 }
+	 }
+	 System.out.println("place you can enter: ");
+	 for(Integer pos:place)
+	 {
+		 System.out.print(pos+" ");
+	 }
+	 System.out.println();
+	 System.out.println("enter your position to add 'X' :");
+	 int position=Utility.readInteger();
+	 
+	 if(board[position]==' ' && board[position]!='X')
+	 {
+		 board[position]='X';
+		 if(checkForWin(board)) 
+		 {  
+			 printBoard(board);
+			System.out.println("Hurray!! You Win.....!!!");
+			System.exit(0);
+			
+		 }
+		 else if(occupiedPosition(board))
+		 {
+			System.out.println("Match Draw....");
+		 }
+		 else
+		 {   
+			 printBoard(board);
+			 System.out.println("Computer's turn");
+			 computerTurn(board);
+
+		 }
+		 
+	 }
+	 else
+	 {
+		 System.out.println("Position already occupied!!");
+		 myTurn(board);
+	 }
+	 
+ }
+ 
+ 
+ 
+ public static void computerTurn(char[] board) 
+ {
+	 
+	 Random rand=new Random();
+	 int position= rand.nextInt(8);
+	 
+	 if(board[position]==' ' && board[position]!='O')
+	 {
+		 board[position]='O';
+		 
+		 if(checkForWin(board)) 
+		 {
+			System.out.println(" Computer Win.....!!!"); 
+			printBoard(board);
+			return;
+		 }
+		 else if(occupiedPosition(board))
+		 {
+			System.out.println("Match Draw....");
+		 }
+		 else
+		 {   
+			 printBoard(board);
+			 System.out.println("YOUR turn");
+			 myTurn(board);
+		 }
+		 
+	 }
+	 else
+	 {
+		 
+		 computerTurn(board);
+	 }
+	 
+ }
+
 
 
 }

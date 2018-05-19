@@ -10,6 +10,6 @@ public class StringPermutation
 	    System.out.println("Enter your string: ");
 	    inputString=Utility.readString();
 	    System.out.println("All possible combinations are:");
-	    Utility.StringPermutation(inputString);
+	    Utility.stringPermutation(inputString);
 	  }    
 }
