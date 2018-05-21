@@ -12,7 +12,7 @@ public class Utility {
 	 */
 	public static int readInteger() {
 		int number= sc.nextInt();
-		//sc.close();
+		
         return number;
 	}
 //_____________________________________________________________________________
@@ -24,7 +24,18 @@ public class Utility {
 	 */
 	public static String readString() {
 		String str= sc.next();
-		sc.close();
+		return str;
+	}
+	
+//_______________________________________________________________________________________
+	
+
+	/*
+	 * String variable stores the String entered by the user as the input
+	 */
+	public static char readCharacter() {
+		char str= sc.next().charAt(0);
+		//sc.close();
 		return str;
 	}
 	
@@ -32,12 +43,11 @@ public class Utility {
 	
 	
 	
-	
 	/*
-	 * create_1d_array method to create 1d array
+	 * createOneDimensionalIntArray method to create 1d array
 	 */
 	
-	public static int[] createOneDimensionalArray() {
+	public static int[] createOneDimensionalIntArray() {
 		int size;
 		System.out.println("Enter size of array");
 		 size=readInteger();
@@ -48,16 +58,55 @@ public class Utility {
 	}
 		 return a;
 	}
+//_______________________________________________________________________________________
 	
-//_______________________________________________________________________________
-	
+  /*
+  * createOneDimensionalStringArray method to create 1d array
+  */
+		
+	public static String[] createOneDimensionalStringArray() {
+		int size;
+		System.out.println("Enter size of array");
+		size=readInteger();
+		String [] a= new String[size];
+		for(int i=0;i<size;i++) 
+		{
+		   System.out.println("Enter value for a["+i+"]  :");
+		   a[i]=readString();
+		}
+			 return a;
+		}
+
+
+
+
+//_______________________________________________________________________________________________________________________
 	
 	
 	/*
-	*  create_2d_array method to generate a 2d array 
+	*  PrintOneDimensionArray method to print a 1d array in matrix form
+	*/ 
+	public static void PrintOneDimensionArray(int[] a) 
+	{
+		
+		System.out.println("Your array is as below:");
+		
+		for(int i=0;i<a.length;i++)
+		{
+		   System.out.print(a[i]+"  ");
+
+		}
+		return;
+	}
+	
+	
+	
+//____________________________________________________________________________________________________________________	
+	/*
+	*  createTwodArray method to generate a 2d array 
 	*/ 
 
-	public static int[][] createTwodArray() 
+	public static int[][] createTwodIntArray() 
 	{
 		int row,col;
 		System.out.println("Enter no of rows:");
@@ -77,11 +126,38 @@ public class Utility {
 		}
 		return a;
 	}
+
 	
+	
+//____________________________________________________________________________________________________________________	
+	/*
+	* createTwodArray method to generate a 2d array 
+	*/ 
+
+	public static String[][] createTwodStringArray() 
+	{
+		int row,col;
+		System.out.println("Enter no of rows:");
+		row=Utility.readInteger();
+		System.out.println("Enter no of columns:");
+		col=Utility.readInteger();
+			
+		String[][]a=new String[row][col];
+			
+		for(int i=0; i<a.length;i++)
+		   {
+			   for(int j=0; j<a[i].length; j++)
+			   {
+				  System.out.println("Enter value for a["+i+"]["+j+"] position :");
+				  a[i][j]=Utility.readString();
+			   }
+			}
+			return a;
+		}
 //_______________________________________________________________________________
 
 	/*
-	*  print_2d_array method to print a 2d array in matrix form
+	*  PrintTwoDimensionArray method to print a 2d array in matrix form
 	*/ 
 
 	public static void PrintTwoDimensionArray(int[][] a) 
@@ -100,6 +176,7 @@ public class Utility {
 			System.out.println();
 			System.out.println();
 		}
+		return;
 	}
 	
 //__________________________________________________________________________________
@@ -108,7 +185,7 @@ public class Utility {
 	/*
 	 * replaceUserName method to replace a template with given user name
 	 */
-	public static String replaceUserName(String user)
+	public String replaceUserName(String user)
 	{   
 		String template="Hello <<UserName>>, How are you?";
         String out="";
@@ -138,7 +215,7 @@ public class Utility {
 	 * findFlipPercent method to finding the percent of head and tail
 	 */
 	
-	public static void findFlipPercent(int no_of_flip) {
+	public void findFlipPercent(int no_of_flip) {
 		
 		 int head=0, tail=0,headPercent, tailPercent;
 		 
@@ -406,7 +483,7 @@ public class Utility {
  *  calculateEffectiveTemp method to find effective temperature of wind mill 
  */
 	 
-	 public static void calculateEffectiveTemp(int t, int v) 
+	 public void calculateEffectiveTemp(int t, int v) 
 	 {
 	 	double w;
 	 	
@@ -674,7 +751,375 @@ public static char[] initializeBoard( char[] board)
 	 }
 	 
  }
+//_______________________________________________________________________________________________________________
+ 
+ 
+ /*
+  * binarySearch method to search an element in an given array
+  */ 
+ 
+ public static void binarySearchForInteger(int a[], int start, int end, int search)
+ {
+     if (end>=start)
+     {
+         int mid = start + (end - start)/2;
 
+        
+         if (a[mid] == search)
+         {
+            System.out.println(search+" is present"); 
+           return;
+         }
+         
+         if (a[mid] > search)
+         {
+            binarySearchForInteger(a, start, mid-1, search);
+         }
+         else
+         {
+            binarySearchForInteger(a, mid+1, end, search);
+         }
+     }
+
+     else 
+     {
+     System.out.println(search+" is not present in the given array" );
+     }
+     return;
+ }
+ 
+ 
+ 
+//_______________________________________________________________________________________________________________
+ 
+ 
+/*
+ * binarySearch method for String
+ */ 
+
+public static void binarySearchForString(char[] a, int start, int end, char search)
+{
+	
+    if (end>=start)
+    {
+        int mid = start + (end - start)/2;
+
+       
+        if (a[mid] == search)
+        {
+           System.out.println(search+" is present"); 
+           return;
+        }
+        
+        if (a[mid] > search)
+        {
+        	binarySearchForString(a, start, mid-1, search);
+        }
+        else
+        {
+        	binarySearchForString(a, mid+1, end, search);
+        }
+    }
+
+    else 
+    {
+    System.out.println(search+" is not present" );
+    }
+   return; 
+}
+ 
+ //___________________________________________________________________________________________________________
+ /*
+  * bubbleSortForInt method to sort integers of an integer array 
+  */  
+ 
+ public static int[] bubbleSortForInt(int a[])
+ {
+     
+     for (int i = 0; i < a.length-1; i++)
+     {
+         for (int j = 0; j < a.length-1-i; j++)
+         {
+             if (a[j] > a[j+1])
+             {
+                 // swap temp and a[i]
+                 int temp = a[j];
+                 a[j] = a[j+1];
+                 a[j+1] = temp;
+             }
+         }
+     }
+     return a;
+ }
+
+
+//___________________________________________________________________________________________________________ 
+ 
+ 
+ /*
+  * insertionSortForInt method to sort integers of an integer array 
+  */  
+ 
+ public static int[] insertionSortForInt(int a[])
+ {
+     
+     for (int i = 1; i < a.length; i++)
+     {
+    	int temp=a[i];
+    	int j=i-1;
+        while(j>=0  && a[j]>temp)
+        {
+        	a[j+1]=a[j];
+        	j=j-1;
+        }
+        a[j+1]=temp;
+     }
+     return a;
+ }
+
+//___________________________________________________________________________________________________________ 
+ 
+ 
+/*
+ * insertionSortForString method to sort strings
+ */  
+
+public static String insertionSortForString(String str)
+{    
+	String out="";
+	char a[]=str.toCharArray();
+    
+    for (int i = 1; i < a.length; i++)
+    {
+   	char temp=a[i];
+   	int j=i-1;
+       while(j>=0  && a[j]>temp)
+       {
+       	a[j+1]=a[j];
+       	j=j-1;
+       }
+       a[j+1]=temp;
+    }
+    for(int i=0;i<a.length;i++)
+    {
+    	out+=a[i];
+    }
+    return out;
+}
+
+
+ //___________________________________________________________________________________________________________
+
+ /*
+  * bubbleSortForString method to sort Strings
+  */  
+ 
+ public static String bubbleSortForString(String a)
+ {
+     String str="";
+     char ch[]=a.toCharArray();
+     for (int i = 0; i < ch.length-1; i++)
+     {
+         for (int j = 0; j < ch.length-1-i; j++)
+         {
+             if (ch[j] > ch[j+1])
+             {
+                 // swap temp and a[i]
+                 char temp = ch[j];
+                 ch[j] = ch[j+1];
+                 ch[j+1] = temp;
+             }
+         }
+     }
+     for (int i=0; i<ch.length;i++)
+     {
+    	 str+=ch[i];
+     }
+     return str;
+ }
+ 
+ 
+ 
+ //_________________________________________________________________________________________________________________
+ 
+ /*
+  * toRemoveSpace method to remove space from a string
+  */ 
+public static String toRemoveSpace(String str)
+{
+	String s="";
+	char ch[]= str.toCharArray();
+	for(int i=0;i<ch.length;i++)
+	{
+		if(ch[i]!=' ')
+			s+=ch[i];
+	}
+	return s;
+}
+
+//____________________________________________________________________________________________________________
+
+/*
+ * convertLowerCase method to make a string in lower case
+ */ 
+public static String convertLowerCase(String str)
+{
+  String s="";
+  char ch[]=str.toCharArray();
+  for(int i=0;i<ch.length;i++)
+  {
+	  if(ch[i]>=65 && ch[i]<=90)
+	  {
+		  s+=(char)(ch[i]+32);
+	  }
+	  else
+	  {
+		  s+=ch[i];
+	  }
+  }
+  
+  return s;
+}
+
+//_____________________________________________________________________________________________________-
+
+/*
+ * checkAnagram method to check anagram of two strings
+ */
+public static void checkAnagram(String str1, String str2)
+{
+	String temp1=str1;
+	String temp2=str2;
+	str1=toRemoveSpace(str1);
+	str1=convertLowerCase(str1);
+	str1=bubbleSortForString(str1);
+	
+	str2=toRemoveSpace(str2);
+	str2=convertLowerCase(str2);
+	str2=bubbleSortForString(str2);
+	
+	if(str1.equals(str2))
+	{
+		System.out.println(temp1+" & "+temp2+" are anagrams");
+	}
+	else
+	{
+		System.out.println(temp1+" & "+temp2+" are not anagrams");
+	}
+	
+}
+//___________________________________________________________________________________________________________
+
+
+/*
+ * primeCheckerRange method to check prime no of a given range
+ */
+public static void primeCheckerRange(int start, int end)
+{   System.out.println("Prime numbers from "+start+" to "+end+":");
+	for(int i=start;i<end;i++)
+	{
+		if(isPrime(i)==true)
+		{
+			System.out.print(i+" ");
+		}
+	}
+
+}
+//__________________________________________________________________________________________________________________
+
+/*
+ * isPrime method to check a no is prime or not
+ */
+public static boolean isPrime(int num) 
+{ 
+	if(num==0 || num==1)
+	return false;
+    for (int i=2;i<=num/2;i++)
+    {   
+	    if (num%i==0)
+	    {
+		   return false;
+	    }  
+	    
+    }
+    return true;
+}
+ 
+
+//_____________________________________________________________________________________________________________
+
+/*
+ * primePalindromeChecker method to check a no palindrome or not
+ */
+public static boolean isPalindrome(int num)
+{
+	int sum=0;
+	int temp=num;
+	while(num>0) 
+	{ 
+	   int rem=num%10;
+	   sum=sum*10+rem;
+	   num=num/10;	
+	}
+	if(sum==temp)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+//______________________________________________________________________________________________________________
+
+/*
+ * primePalindromeChecker method to check a no prime as well as palindrome or not
+ */
+public void primePalindromeChecker(int start,int end)
+{
+
+	for(int i=start;i<end;i++)
+	{
+		if(Utility.isPrime(i)==true && Utility.isPalindrome(i)==true)
+		{
+			System.out.print(i+"  ");
+		}
+	}
+}
+//________________________________________________________________________________________________________________
+
+public static void tempConversionCelToFahr()
+{
+   System.out.println("Enter temperature in Celsious:");
+   int c=Utility.readInteger();
+   int f= ((c*9)/5)+32;
+   System.out.println("temperature in fahrenheit:"+f);
+}
+
+
+public static void tempConversionFahrenToCel()
+{
+   System.out.println("Enter temperature in fahrenheit:");
+   int f=Utility.readInteger();
+   int c= (f-32)*5/9;
+   System.out.println("temperature in celsious:"+c);
+}
+
+
+//___________________________________________________________________________________________________________
+public static void findSquareRoot(int c)
+{
+	double t;
+	t=c;
+	double epsilon=Math.pow(Math.E, -15);
+	while(Math.abs(t-(c/t))> epsilon*t)
+	{
+		t=((c/t)+t)/2;
+	}
+
+	System.out.println("Square root of "+c+" is :"+t);
+}
 
 
 }
