@@ -3,14 +3,11 @@ package com.bridgelab.functionalprogwork;
 import com.bridgelabz.utility.Utility;
 
 /**
- *  Purpose: To find Euclidean distance of given point to origin
- *
- *  @author  Jayanta Roy
- *  @version 1.0
- *  @since   18-05-2018
- *
+ * Purpose : To find the distance between two points
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since   22-05-2018
  */
-
 public class Distance {
 
 	public static void main(String[] args) {

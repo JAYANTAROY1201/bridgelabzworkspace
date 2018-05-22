@@ -3,14 +3,11 @@ package com.bridgelab.functionalprogwork;
 import com.bridgelabz.utility.Utility;
 
 /**
- *  Purpose: To play gambler and find no of win
- *
- *  @author  Jayanta Roy
- *  @version 1.0
- *  @since   17-05-2018
- *
+ * Purpose : To play a gambler game
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since   22-05-2018
  */
-
 public class GamblerGame {
    public static void main(String[] args) 
    {

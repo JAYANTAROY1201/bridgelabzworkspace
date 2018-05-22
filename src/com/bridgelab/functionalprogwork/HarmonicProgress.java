@@ -4,14 +4,11 @@ import com.bridgelabz.utility.Utility;
 
 
 /**
- *  Purpose: To find harmonic progression till given no.
- *
- *  @author  Jayanta Roy
- *  @version 1.0
- *  @since   17-05-2018
- *
+ * Purpose : To find harmonic progress of a given no
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since   22-05-2018
  */
-
 public class HarmonicProgress {
    public static void main(String[] args) {
 	   int num;

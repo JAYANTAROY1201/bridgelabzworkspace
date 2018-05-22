@@ -3,14 +3,11 @@ package com.bridgelab.functionalprogwork;
 import com.bridgelabz.utility.Utility;
 
 /**
- *  Purpose: To find the roots of a quadratic equation
- *
- *  @author  Jayanta Roy
- *  @version 1.0
- *  @since   18-05-2018
- *
+ * Purpose : To find the roots of a quardatic equation
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since   22-05-2018
  */
-
 public class Quadratic {
 
 	public static void main(String[] args)

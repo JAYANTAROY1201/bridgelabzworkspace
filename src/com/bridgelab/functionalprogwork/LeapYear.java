@@ -4,14 +4,11 @@ package com.bridgelab.functionalprogwork;
 import com.bridgelabz.utility.Utility;
 
 /**
- *  Purpose: To find a given year leap year or not
- *
- *  @author  Jayanta Roy
- *  @version 1.0
- *  @since   17-05-2018
- *
+ * Purpose : To find a year leap year or not
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since   22-05-2018
  */
-
 public class LeapYear
 {
 	public static void main(String[]args)

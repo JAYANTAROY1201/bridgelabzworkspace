@@ -3,12 +3,10 @@ package com.bridgelab.functionalprogwork;
 import com.bridgelabz.utility.Utility;
 
 /**
- *  Purpose: To create and print a user defined 2d array
- *
- *  @author  Jayanta Roy
- *  @version 1.0
- *  @since   18-05-2018
- *
+ * Purpose : To to create and print a 2d array
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since   22-05-2018
  */
 public class TwoDimensionArray 
 {

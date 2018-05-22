@@ -3,13 +3,11 @@ package com.bridgelab.functionalprogwork;
 import com.bridgelabz.utility.Utility;
 
 /**
- *  Purpose: To implement a TIC-TAC-TOE game
- *  @author  Jayanta Roy
- *  @version 1.0
- *  @since   18-05-2018
- *
+ * Purpose : To implement a tic tac toe game
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since   22-05-2018
  */
-
 public class TicTacToe {
 
 	public static void main(String[] args) {

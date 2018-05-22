@@ -2,6 +2,13 @@ package com.bridgelab.algorithmprogworks;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * Purpose : To search a string using binary search
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since   22-05-2018
+ */
+
 public class BinarySearchForString {
 
 	public static void main(String[] args) 
