@@ -43,11 +43,11 @@ public class Utility {
 	 * createOneDimensionalIntArray method to create 1d array
 	 */
 
-	public static int[] createOneDimensionalIntArray() {
+	public static Integer[] createOneDimensionalIntArray() {
 		int size;
 		System.out.println("Enter size of array");
 		size = readInteger();
-		int[] a = new int[size];
+		Integer[] a = new Integer[size];
 		for (int i = 0; i < size; i++) {
 			System.out.println("Enter value for a[" + i + "]  :");
 			a[i] = readInteger();
@@ -77,7 +77,7 @@ public class Utility {
 	/*
 	 * PrintOneDimensionArray method to print a 1d array in matrix form
 	 */
-	public static void PrintOneDimensionArray(int[] a) {
+	public static void PrintOneDimensionArray(Integer[] a) {
 
 		System.out.println("Your array is as below:");
 
@@ -335,14 +335,14 @@ public class Utility {
 		ArrayList<Integer> coupon = new ArrayList<Integer>();
 
 		Random r = new Random();
-		do {
-			code = r.nextInt();
+		while (coupon.size() < lengthOfCoupon) {
+			code = r.nextInt(10);
 			count++;
 			if (!coupon.contains(code)) {
 				coupon.add(code);
 			}
 
-		} while (coupon.size() < lengthOfCoupon);
+		}
 
 		System.out.println("You need total " + count + " random numbers to generate this coupon");
 
@@ -357,7 +357,7 @@ public class Utility {
 	 * sum_of_num method to find when the summation gives zero
 	 */
 
-	public void sumOfNum(int[] a) {
+	public void sumOfNum(Integer[] a) {
 		int count = 0;
 
 		for (int j = 0; j < a.length; j++) {
@@ -639,7 +639,7 @@ public class Utility {
 	 * binarySearch method to search an element in an given array
 	 */
 
-	public static void binarySearchForInteger(int a[], int start, int end, int search) {
+	public static void binarySearchForInteger(Integer a[], int start, int end, int search) {
 		if (end >= start) {
 			int mid = start + (end - start) / 2;
 
@@ -661,41 +661,36 @@ public class Utility {
 		return;
 	}
 
-// _______________________________________________________________________________________________________________
+	// _______________________________________________________________________________________________________________
 	/*
 	 * binarySearch method for String array
 	 */
-	public static int binarySearchStringArray(String[]array, String word) {
-        
-        Arrays.sort(array);
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
-        }
-        int first=0;
-        int last=array.length-1;
-        int  mid = 0;
-       while( first <= last ){
-           mid =(first+last)/2;
-            if(word.compareTo(array[mid])>0)
-            {
-                first=mid+1;
-            }
-            else if(word.compareTo(array[mid])<0) {
-                last=mid-1;
-            }
-            else
-            {     
-            System.out.println("<"+word+">"+" is found at location "+(mid+1));
-            return mid;
-            }
-            if(first>last)
-            {
-                System.out.println(word+ "is not found.\n");
-            }
-        }
-    return mid;
-    }
-//_______________________________________________________________________________________________________________________________________________
+	public static int binarySearchStringArray(String[] array, String word) {
+
+		Arrays.sort(array);
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i]);
+		}
+		int first = 0;
+		int last = array.length - 1;
+		int mid = 0;
+		while (first <= last) {
+			mid = (first + last) / 2;
+			if (word.compareTo(array[mid]) > 0) {
+				first = mid + 1;
+			} else if (word.compareTo(array[mid]) < 0) {
+				last = mid - 1;
+			} else {
+				System.out.println("<" + word + ">" + " is found at location " + (mid + 1));
+				return mid;
+			}
+			if (first > last) {
+				System.out.println(word + "is not found.\n");
+			}
+		}
+		return mid;
+	}
+	// _______________________________________________________________________________________________________________________________________________
 	/*
 	 * binarySearch method for String
 	 */
@@ -723,69 +718,46 @@ public class Utility {
 		return;
 	}
 
+	// __________________________________________________________________________________________________________
+	/*
+	 * binarySearch method for generic
+	 */
+	public static <T extends Comparable<T>> void binarySearch(T arr[], int first, int last, T key) {
+		Arrays.sort(arr);
+		int mid = (first + last) / 2;
+		while (first <= last) {
+			if (arr[mid].compareTo(key) < 0) {
+				first = mid + 1;
+			} else if (arr[mid].compareTo(key) == 0) {
+				System.out.println("element is found ");
+				break;
+			} else {
+				last = mid - 1;
+			}
+			mid = (first + last) / 2;
+		}
+		if (first > last) {
+			System.out.println("Elements is not found");
+		}
+	}
 	// ___________________________________________________________________________________________________________
 	/*
 	 * bubbleSortForInt method to sort integers of an integer array
 	 */
 
-	public static int[] bubbleSortForInt(int a[]) {
+	public static Integer[] bubbleSortForInt(Integer a[]) {
 
 		for (int i = 0; i < a.length - 1; i++) {
-			for (int j = 0; j < a.length - 1 - i; j++) {
-				if (a[j] > a[j + 1]) {
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[i] > a[j]) {
 					// swap temp and a[i]
-					int temp = a[j];
-					a[j] = a[j + 1];
-					a[j + 1] = temp;
+					int temp = a[i];
+					a[i] = a[j];
+					a[j] = temp;
 				}
 			}
 		}
 		return a;
-	}
-
-	// ___________________________________________________________________________________________________________
-
-	/*
-	 * insertionSortForInt method to sort integers of an integer array
-	 */
-
-	public static int[] insertionSortForInt(int a[]) {
-
-		for (int i = 1; i < a.length; i++) {
-			int temp = a[i];
-			int j = i - 1;
-			while (j >= 0 && a[j] > temp) {
-				a[j + 1] = a[j];
-				j = j - 1;
-			}
-			a[j + 1] = temp;
-		}
-		return a;
-	}
-
-	// ___________________________________________________________________________________________________________
-
-	/*
-	 * insertionSortForString method to sort strings
-	 */
-
-	public static String insertionSortForString(String str) {
-		String out = "";
-		char a[] = str.toCharArray();
-
-		for (int i = 1; i < a.length; i++) {
-			char temp = a[i];
-			int j = i - 1;
-			while (j >= 0 && a[j] > temp) {
-				a[j + 1] = a[j];
-				j = j - 1;
-			}
-			a[j + 1] = temp;
-		}
-		for (int i = 0; i < a.length; i++) {
-			out += a[i];
-		}
-		return out;
 	}
 
 	// ___________________________________________________________________________________________________________
@@ -812,9 +784,150 @@ public class Utility {
 		}
 		return str;
 	}
+	// ____________________________________________________________________________________________________________________________________________
+	/*
+	 * bubbleSortGeneric method to sort arrays
+	 */
+
+	public static <T extends Comparable<T>> void bubbleSortGeneric(T[] a) {
+		for (int i = 0; i < a.length - 1; i++) {
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[i].compareTo(a[j]) > 0) {
+					// swap temp and a[i]
+					T temp = a[i];
+					a[i] = a[j];
+					a[j] = temp;
+				}
+			}
+		}
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + " ");
+		}
+	}
+	// _______________________________________________________________________________________________________________________________________________
+
+	/*
+	 * insertionSortForInt method to sort integers of an integer array
+	 */
+
+	public static Integer[] insertionSortForInt(Integer a[]) {
+
+		for (int i = 1; i < a.length; i++) {
+			int temp;
+			int key = a[i];
+			for (int j = i - 1; j >= 0; j--) {
+				if (key < a[j]) {
+					temp = a[j];
+					a[j] = a[j + 1];
+					a[j + 1] = temp;
+				}
+			}
+		}
+		return a;
+	}
+
+	// ___________________________________________________________________________________________________________
+
+	/*
+	 * insertionSortForString method to sort strings
+	 */
+
+	public static String insertionSortForString(String str) {
+		String out = "";
+		char a[] = str.toCharArray();
+
+		for (int i = 1; i < a.length; i++) {
+			char temp = a[i];
+			char key = a[i];
+			for (int j = i - 1; j >= 0; j--) {
+				if (key < a[j]) {
+					temp = a[j];
+					a[j] = a[j + 1];
+					a[j + 1] = temp;
+				}
+			}
+		}
+		for (int i = 0; i < a.length; i++) {
+			out += a[i];
+		}
+		return out;
+	}
+
+	// ______________________________________________________________________________________________________________________________________________
+
+	/*
+	 * insertionSortGeneric method to sort arrays
+	 */
+	public static <T extends Comparable<T>> T[] insertionSortGeneric(T[] a) {
+		for (int i = 1; i < a.length; i++) {
+			T temp;
+			T key = a[i];
+			for (int j = i - 1; j >= 0; j--) {
+				if (key.compareTo(a[j]) < 0) {
+					temp = a[j];
+					a[j] = a[j + 1];
+					a[j + 1] = temp;
+				}
+			}
+		}
+		return a;
+	}
 
 	// _________________________________________________________________________________________________________________
+	/*
+	 * mergeSort method to sort arrays
+	 */
 
+	public static Comparable[] mergeSort(Comparable[] a) {
+		// If a is empty; no need to do anything
+		if (a.length <= 1) {
+			return a;
+		}
+
+		// Split the array in half in two parts
+		Comparable[] first = new Comparable[a.length / 2];
+		Comparable[] second = new Comparable[a.length - first.length];
+		System.arraycopy(a, 0, first, 0, first.length);
+		System.arraycopy(a, first.length, second, 0, second.length);
+
+		// Sort each half recursively
+		mergeSort(first);
+		mergeSort(second);
+
+		// Merge both halves together, overwriting to original array
+		merge(first, second, a);
+		return a;
+	}
+
+	private static void merge(Comparable[] first, Comparable[] second, Comparable[] result) {
+		// Index Position in first array - starting with first element
+		int iFirst = 0;
+
+		// Index Position in second array - starting with first element
+		int iSecond = 0;
+
+		// Index Position in merged array - starting with first position
+		int iMerged = 0;
+
+		// Compare elements at iFirst and iSecond,
+		// and move smaller element at iMerged
+		while (iFirst < first.length && iSecond < second.length) {
+			if (first[iFirst].compareTo(second[iSecond]) < 0) {
+				result[iMerged] = first[iFirst];
+				iFirst++;
+			} else {
+				result[iMerged] = second[iSecond];
+				iSecond++;
+			}
+			iMerged++;
+		}
+		// copy remaining elements from both halves - each half will have already sorted
+		// elements
+		System.arraycopy(first, iFirst, result, iMerged, first.length - iFirst);
+		System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
+	}
+
+	// ____________________________________________________________________________________________________________
 	/*
 	 * toRemoveSpace method to remove space from a string
 	 */
@@ -843,7 +956,7 @@ public class Utility {
 				s += ch[i];
 			}
 		}
-    return s;
+		return s;
 	}
 
 	// _____________________________________________________________________________________________________-
@@ -902,7 +1015,7 @@ public class Utility {
 	// _____________________________________________________________________________________________________________
 
 	/*
-	 * primePalindromeChecker method to check a no palindrome or not
+	 * isPalindrome method to check a no palindrome or not
 	 */
 	public static boolean isPalindrome(int num) {
 		int sum = 0;
@@ -922,8 +1035,7 @@ public class Utility {
 	// ______________________________________________________________________________________________________________
 
 	/*
-	 * primePalindromeChecker method to check a no prime as well as palindrome or
-	 * not
+	 * primePalindromeChecker method to check a no prime+palindrome or not
 	 */
 	public void primePalindromeChecker(int start, int end) {
 
@@ -934,10 +1046,8 @@ public class Utility {
 		}
 	}
 
-	/**
-	 * ________________________________________________________________________________________________________________
-	 * /* tempConversion method to convert temperature to celsious to fahrenheit or
-	 * vice versa
+	/*
+	 * tempConversion method to convert temperature to °C to °F or viceversa
 	 */
 	public static void tempConversionCelToFahr() {
 		System.out.println("Enter temperature in Celsious:");
@@ -1035,63 +1145,107 @@ public class Utility {
 		}
 	}
 
-// __________________________________________________________________________________________________________
+	// __________________________________________________________________________________________________________
 
-/*
-* toBin method to convert decimal to binary
-*/
+	/*
+	 * toBin method to convert decimal to binary
+	 */
 
 	public static String toBin(int num) {
 
 		String out = "";
-		String res= "";
+		String res = "";
 		while (num > 0) {
 			int rem = num % 2;
 			num = num / 2;
 			out = rem + out;
 
 		}
-		res=out;
-		for (int i = 0; i < (8 - out.length()); i++) 
-		{
-         res=0+res;
+		res = out;
+		for (int i = 0; i < (8 - out.length()); i++) {
+			res = 0 + res;
 		}
 		return res;
 	}
-	
-//___________________________________________________________________________________________________________
 
-/*
-* binTodec method to convert binary to decimal
-*/
-	public static int binToDec(String bin)
-	{  
-       int num=Integer.parseInt(bin);
-	   int sum=0,count=0;
-	   while(num>0)
-	   {
-		 int rem=num%10;
-		 num/=10;
-		 sum=sum+ rem*(int)Math.pow(2,count++);
-	   }
-	   return sum;
-		
+	// ___________________________________________________________________________________________________________
+
+	/*
+	 * binTodec method to convert binary to decimal
+	 */
+	public static int binToDec(String bin) {
+		int num = Integer.parseInt(bin);
+		int sum = 0, count = 0;
+		while (num > 0) {
+			int rem = num % 10;
+			num /= 10;
+			sum = sum + rem * (int) Math.pow(2, count++);
+		}
+		return sum;
+
 	}
-//___________________________________________________________________________________________________________
-/*
-* swapNibbles method to swap nibbles
-*/
-	
+	// ___________________________________________________________________________________________________________
+	/*
+	 * swapNibbles method to swap nibbles
+	 */
+
 	public static String swapNibbles(String str) {
-		  String out1="",out2="";
-		  
-		  for(int i=0;i<str.length()/2;i++) {
-			  out1=out1+str.charAt(i);
-		  }
-		  for(int i=str.length()/2;i<str.length();i++) {
-			  out2=out2+str.charAt(i);
-		  }
-		  return (out2+out1);
+		String out1 = "", out2 = "";
+
+		for (int i = 0; i < str.length() / 2; i++) {
+			out1 = out1 + str.charAt(i);
+		}
+		for (int i = str.length() / 2; i < str.length(); i++) {
+			out2 = out2 + str.charAt(i);
+		}
+		return (out2 + out1);
 	}
-//______________________________________________________________________________________________________________________________
+	// ______________________________________________________________________________________________________________________________
+
+	/*
+	 * finding day for a given date
+	 */
+	public static void dayOfWeek(int d, int m, int y) {
+		if ((m == 4 || m == 6 || m == 9 || m == 11) && (d >= 30)) {
+			System.out.println("SORRY!!!The month you have entered doesn't have 31 days");
+		} else if (m == 2) {
+			if (y % 100 == 0) {
+				if (y % 400 != 0 && d > 28) {
+					System.out.println("This year is not a leap year......last date is 28 for this month!!");
+				} else if (y % 400 == 0 && d > 29) {
+					System.out.println("SORRY!! The year you've entered is a leap year so FEBRUARY has 29 days... ");
+				} else {
+					System.out.println("The day is " + getDay(d, m, y));
+				}
+			}
+			if (y % 100 != 0) {
+				if (y % 4 != 0 && d > 28) {
+					System.out.println("This year is not a leap year......last date is 28 for this month!!");
+				} else if (y % 4 == 0 && d > 29) {
+					System.out.println("SORRY!! The year you've entered is a leap year so FEBRUARY has 29 days... ");
+				} else {
+					System.out.println("The day is " + getDay(d, m, y));
+				}
+			}
+		} else if (d > 31) {
+			System.out.println("SORRY!!! No month has " + d + "  days");
+		} else {
+			System.out.println("The day is " + getDay(d, m, y));
+		}
+	}
+
+	private static String getDay(int d, int m, int y) {
+		String[] day = { "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday" };
+		String out = "";
+		int y0 = y - (14 - m) / 12;
+		int x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
+		int m0 = m + 12 * ((14 - m) / 12) - 2;
+		int d0 = (d + x + (31 * m0) / 12) % 7;
+		for (int i = 0; i < day.length; i++) {
+			if (d0 == i)
+				out = day[i];
+		}
+		return out;
+	}
+
 }
