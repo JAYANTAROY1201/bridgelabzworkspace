@@ -1,4 +1,4 @@
-package com.bridgelabz.datastuctures.orderList;
+package com.bridgelabz.datastructures.orderList;
 
 public class Node{
 	

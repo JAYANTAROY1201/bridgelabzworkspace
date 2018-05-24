@@ -1,4 +1,4 @@
-package com.bridgelabz.datastuctures.orderList;
+package com.bridgelabz.datastructures.orderList;
 
 public class OrderedList {
 	public static Node head;
@@ -13,40 +13,7 @@ public class OrderedList {
     
     //to add an item to the list
 	public void add(Comparable data) {
-			Node current=null;
-			Node newNode = new Node(data);
-			if(head == null) {
-				head = newNode;
-			    current = head;
-			    count++;
-			    return;
-			}
-			else if(head.data.compareTo(data) > 0) {
-				newNode.next = head;
-				head = newNode;
-				count++;
-				return;
-			}
-			else if(current.data.compareTo(data) < 0) {
-				current.next = newNode;
-				current = newNode;
-				count++;
-				return;
-			}
-			else 
-			{
-				Node prev = head;
-				current = head.next;
-				
-				while((current != current) && (current.data.compareTo(data) < 0)) 
-				{
-					prev = current;
-					current = current.next;					
-				}
-				prev.next = newNode;
-				newNode.next = current;
-				count++;
-			}			
+			
 		}
 	
 	

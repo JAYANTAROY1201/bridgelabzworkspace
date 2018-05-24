@@ -1,4 +1,4 @@
-package com.bridgelabz.datastuctures.orderList;
+package com.bridgelabz.datastructures.orderList;
 
 public class Test {
 
@@ -8,7 +8,7 @@ public class Test {
 		System.out.println(ol.size());
 		ol.add(5);
 		ol.display();
-		ol.add(6);
+		//ol.add(6);
 		//ol.display();
 		//ol.add(3);
 		//ol.display();
