@@ -453,7 +453,7 @@ public class Utility {
 		}
 		System.out.println("Starting time is : " + startTime + " ns");
 		System.out.println("Ending time is : " + endTime + " ns");
-		System.out.println("Elapsed Time is : " + (endTime - startTime) + " ns");
+		System.out.println("Elapsed Time is : " + ((endTime - startTime)/1000000000 )+ "s");
 	}
 	// ________________________________________________________________________________________________________________________________________
 
@@ -909,8 +909,6 @@ public class Utility {
 		// Index Position in merged array - starting with first position
 		int iMerged = 0;
 
-		// Compare elements at iFirst and iSecond,
-		// and move smaller element at iMerged
 		while (iFirst < first.length && iSecond < second.length) {
 			if (first[iFirst].compareTo(second[iSecond]) < 0) {
 				result[iMerged] = first[iFirst];
@@ -921,8 +919,7 @@ public class Utility {
 			}
 			iMerged++;
 		}
-		// copy remaining elements from both halves - each half will have already sorted
-		// elements
+	
 		System.arraycopy(first, iFirst, result, iMerged, first.length - iFirst);
 		System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
 	}
@@ -986,7 +983,7 @@ public class Utility {
 	/*
 	 * primeCheckerRange method to check prime no of a given range
 	 */
-	public static void primeCheckerRange(int start, int end) {
+	public static void findPrimeNumbers(int start, int end) {
 		System.out.println("Prime numbers from " + start + " to " + end + ":");
 		for (int i = start; i < end; i++) {
 			if (isPrime(i) == true) {
