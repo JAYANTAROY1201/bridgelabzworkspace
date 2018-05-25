@@ -25,6 +25,7 @@ public class UnorderedList {
 			System.out.println(item + " added successfully");
 			return;
 		}
+		
 		tail = head;
 		while (tail.next != null) {
 			tail = tail.next;

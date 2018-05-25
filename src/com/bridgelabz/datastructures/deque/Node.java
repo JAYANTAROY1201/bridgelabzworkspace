@@ -1,4 +1,4 @@
-package com.bridgelabz.datastructures.unorderedList;
+package com.bridgelabz.datastructures.deque;
 
 /**
  * purpose: To define a node

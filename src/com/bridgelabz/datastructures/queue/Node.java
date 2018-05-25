@@ -1,14 +1,7 @@
-package com.bridgelabz.datastructures.unorderedList;
+package com.bridgelabz.datastructures.queue;
 
-/**
- * purpose: To define a node
- * @author JAYANTA ROY
- * @version 1.0
- * @since 24-05-2018
- */
 public class Node {
-
-	public Comparable data;
+	Comparable data;
 	public Node next;
 
 	public Node(Comparable data) {

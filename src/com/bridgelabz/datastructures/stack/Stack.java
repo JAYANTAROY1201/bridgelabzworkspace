@@ -25,10 +25,10 @@ public class Stack {
 	}
 
 	// to push an element into the stack
-	public void push(Comparable j) {
+	public void push(Comparable value) {
 		if (top == maxSize - 1)
 			System.err.println("stack overflowed");
-		stackArray[++top] = j;
+		stackArray[++top] = value;
 	}
 
 	// to pop an item from the top and remove it

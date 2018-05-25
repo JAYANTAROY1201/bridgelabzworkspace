@@ -336,7 +336,7 @@ public class Utility {
 
 		Random r = new Random();
 		while (coupon.size() < lengthOfCoupon) {
-			code = r.nextInt(10);
+			code = r.nextInt();
 			count++;
 			if (!coupon.contains(code)) {
 				coupon.add(code);
