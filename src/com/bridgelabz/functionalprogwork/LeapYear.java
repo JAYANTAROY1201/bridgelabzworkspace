@@ -4,7 +4,6 @@ import com.bridgelabz.utility.Utility;
 
 /**
  * Purpose : To find a year leap year or not
- * 
  * @author JAYANTA ROY
  * @version 1.0
  * @since 22-05-2018

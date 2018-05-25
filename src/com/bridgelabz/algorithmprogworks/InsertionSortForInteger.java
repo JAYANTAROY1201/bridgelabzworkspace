@@ -4,7 +4,6 @@ import com.bridgelabz.utility.Utility;
 
 /**
  * Purpose : To sort integer using insertion sort
- * 
  * @author JAYANTA ROY
  * @version 1.0
  * @since 22-05-2018

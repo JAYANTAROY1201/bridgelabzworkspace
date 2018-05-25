@@ -1,4 +1,4 @@
-package com.bridgelabz.datastructures.unorderedList;
+package com.bridgelabz.datastructures.orderList;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,27 +8,28 @@ import java.io.FileWriter;
 import com.bridgelabz.utility.Utility;
 
 /**
- * purpose: To perform actions using unordered list
+ * purpose: To implement funcionalities of ordered list
  * @author JAYANTA ROY
  * @version 1.0
- * @since 24-05-2018
+ * @since 25-05-2018
  */
-public class UnorderedMain {
+public class OrderedListMain {
 
 	public static void main(String[] args) {
-		File f = new File("/home/administrator/eclipse-workspace/BridgelabzModules/myFile2.txt");
-		System.out.println("Enter the word you want to search:");
-		String searchItem = Utility.readString();
-		UnorderedList list = UnorderedList.list();
+		File f = new File("/home/administrator/eclipse-workspace/BridgelabzModules/numberfile.txt");
+		System.out.println("Enter number to be search from file:");
+		Integer searchItem = Utility.readInteger();
+		OrderedList ol = OrderedList.list();
 		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(new FileReader(f));
 			String word = reader.readLine();
-			System.out.println(word);
+			System.out.print(word + "");
+			System.out.println();
 			while (word != null) {
 				String[] str = word.split(" ");
 				for (int i = 0; i < str.length; i++) {
-					list.add(str[i]);
+					ol.add(Integer.parseInt(str[i]));
 				}
 				break;
 			}
@@ -36,20 +37,21 @@ public class UnorderedMain {
 			e.printStackTrace();
 		}
 
-		if (UnorderedList.search(searchItem)) {
-			UnorderedList.remove(searchItem);
+		if (OrderedList.search(searchItem)) {
+			OrderedList.remove(searchItem);
 		} else {
-			list.add(searchItem);
+			ol.add(searchItem);
 		}
 
 		String out = "";
-		while (UnorderedList.size() > 0) {
-			out = UnorderedList.pop() + " " + out;
+		while (OrderedList.size() > 0) {
+			out = OrderedList.pop() + " " + out;
 		}
 
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(f));
 			writer.write(out);
+			writer.flush();
 			System.out.println();
 			System.out.println("file written successfully");
 			writer.close();

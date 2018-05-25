@@ -4,7 +4,6 @@ import com.bridgelabz.utility.Utility;
 
 /**
  * Purpose : To find tday of a given date
- * 
  * @author JAYANTA ROY
  * @version 1.0
  * @since 23-05-2018

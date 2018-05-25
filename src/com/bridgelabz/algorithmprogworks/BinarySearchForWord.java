@@ -8,7 +8,6 @@ import com.bridgelabz.utility.Utility;
 
 /**
  * purpose: to find a word from a given file
- * 
  * @author JAYANTA ROY
  * @version 1.0
  * @since 22-05-2018

@@ -4,7 +4,6 @@ import com.bridgelabz.utility.Utility;
 
 /**
  * Purpose : To find the root of a given number using newton method
- * 
  * @author JAYANTA ROY
  * @version 1.0
  * @since 22-05-2018

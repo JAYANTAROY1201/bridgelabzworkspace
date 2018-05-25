@@ -2,7 +2,6 @@ package com.bridgelabz.algorithmprogworks;
 
 /**
  * Purpose : To find monthly payment
- * 
  * @author JAYANTA ROY
  * @version 1.0
  * @since 22-05-2018

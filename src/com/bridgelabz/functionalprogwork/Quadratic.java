@@ -4,7 +4,6 @@ import com.bridgelabz.utility.Utility;
 
 /**
  * Purpose : To find the roots of a quardatic equation
- * 
  * @author JAYANTA ROY
  * @version 1.0
  * @since 22-05-2018
