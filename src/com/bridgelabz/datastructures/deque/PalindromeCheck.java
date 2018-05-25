@@ -16,7 +16,8 @@ public class PalindromeCheck {
 		}
       
 		int flag=0;
-
+		if(str.length()%2==0 
+		{
 		while(myDeque.size()>1)
 		{
 			if( myDeque.removeFront().compareTo(myDeque.removeRear())!=0)
@@ -24,6 +25,18 @@ public class PalindromeCheck {
 				flag=1;
 				break;
 			}
+		}
+		}
+		else
+	        {
+		while(myDeque.size()>2)
+		{
+			if( myDeque.removeFront().compareTo(myDeque.removeRear())!=0)
+			{
+				flag=1;
+				break;
+			}
+		}
 		}
 
 		if(flag==0)
