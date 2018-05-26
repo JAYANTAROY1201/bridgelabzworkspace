@@ -19,7 +19,7 @@ public class OrderedListMain {
 		File f = new File("/home/administrator/eclipse-workspace/BridgelabzModules/numberfile.txt");
 		System.out.println("Enter number to be search from file:");
 		Integer searchItem = Utility.readInteger();
-		OrderedList ol = OrderedList.list();
+		OrderedList ol = OrderedList.orderedlist();
 		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(new FileReader(f));

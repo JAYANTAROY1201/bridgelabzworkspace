@@ -1,133 +1,62 @@
 package com.bridgelabz.datastructures.deque;
 
+import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
+
 /**
  * purpose: To implement an unordered list
  * @author JAYANTA ROY
  * @version 1.0
  * @since 24-05-2018
  */
-public class DequeList {
-	public static Node front;
-	public static Node rear;
-	static int count;
+public class DequeList<G extends Comparable<G>> {
 
 	// to create a new empty list
-	public static DequeList dequelist() {
-		return (new DequeList());
+	public static<G extends Comparable<G>> DequeList<G> dequelist() {
+		return (new DequeList<G>());
 	}
 
 	// to add an item to the front list
-	public void addFront(Comparable item) {
-		Node nodeToInsert = new Node(item, null);
-		if (front == null) {
-			front = nodeToInsert;
-			count++;
-			System.out.println(item + " added successfully");
-			return;
-		}
-		rear=front;
-		nodeToInsert.next=front;
-		front=nodeToInsert;
-		count++;
-		System.out.println(item + " added successfully");
-		
-		while(rear.next!=null)
-		{
-			rear=rear.next;
-		}
-		return;	
+	public static <G extends Comparable<G>>void addFront(G item) {
+		SingleLinkedList.addFirst(item);		
 	}
 
 	// to add an item to the last
-	public void addRear(Comparable item) {
-		Node temp = new Node(item, null);
-		if (front == null) {
-			front = temp;
-			count++;
-			System.out.println(item + " added successfully");
-			return;
-		}
-		rear = front;
-		while (rear.next != null) {
-			rear = rear.next;
-		}
-		rear.next = temp;
-		rear = temp;
-		count++;
-		System.out.println(item + " added successfully");
+	public static<G extends Comparable<G>> void addRear(G item) {
+		SingleLinkedList.add(item);
 	}
 
 	
 	// to find the size of the list
 	public static int size() {
-		return count;
+		return SingleLinkedList.size();
 	}
 
 	// to find a a list empty or not
 	public static boolean isEmpty() {
-		if (count == 0)
-			return true;
-		return false;
+		return SingleLinkedList.isEmpty();
 	}
 
 
 	// to check whether the item is present or not
-	public static boolean search(Comparable item) {
-
-		Node temp = front;
-		if (rear.data.compareTo(item) == 0)
-			return true;
-		while (temp.next != null) {
-			if (temp.data.compareTo(item) == 0)
-				return true;
-			else {
-				temp = temp.next;
-			}
-		}
-		return false;
+	public static<G extends Comparable<G>> boolean search(G item) {
+       return SingleLinkedList.search(item);
 	}
 
 
 	// to remove the last item as well as to remove it
-	public static Comparable removeFront() {
-		Comparable res=front.data;
-		front=front.next;
-		return res;
+	public static<G extends Comparable<G>> G removeFront() {
+		
+		return SingleLinkedList.removeByPosition(1);
 	}
 
 	// to fetch the last item as well as to remove it
-	public static Comparable removeRear() {
-		Node current = front;
-		Node nextNode = current.next;
-		if (front.next == null) {
-			Comparable c = front.data;
-			front = null;
-			count--;
-			return c;
-		}
-		while (nextNode.next != null) {
-			current = current.next;
-			nextNode = current.next;
-		}
-		Comparable c = nextNode.data;
-		current.next = null;
-		rear=current;
-		nextNode=null;
-		count--;
-		return c;
+	public static <G extends Comparable<G>>G removeRear() {
+		return SingleLinkedList.pop();
 	}
 	
    //to display items
 	public static void display() {
-		System.out.println();
-		Node temp = front;
-		for (int i = 1; i <= size(); i++) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-		System.out.println();
+		SingleLinkedList.display();
 	}
-
-
 	}
 

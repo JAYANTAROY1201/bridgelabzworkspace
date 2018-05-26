@@ -1,6 +1,6 @@
 package com.bridgelabz.datastructures.queue;
 
-import com.bridgelabz.datastructures.queue.Utility;;
+import com.bridgelabz.datastructures.queue.UtilityQueue;;
 
 /**
  * purpose: To create a simple banking transaction using queue
@@ -10,7 +10,6 @@ import com.bridgelabz.datastructures.queue.Utility;;
  */
 public class BankQueue {
 	public static void main(String[] args) {
-		Queue myQueue = Queue.queue();
-		Utility.bankTransaction(myQueue);
+		UtilityQueue.bankTransaction();
 	}
 }

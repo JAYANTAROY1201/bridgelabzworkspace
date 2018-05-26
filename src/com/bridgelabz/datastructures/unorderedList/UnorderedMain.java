@@ -19,7 +19,6 @@ public class UnorderedMain {
 		File f = new File("/home/administrator/eclipse-workspace/BridgelabzModules/myFile2.txt");
 		System.out.println("Enter the word you want to search:");
 		String searchItem = Utility.readString();
-		UnorderedList list = UnorderedList.list();
 		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(new FileReader(f));
@@ -28,7 +27,7 @@ public class UnorderedMain {
 			while (word != null) {
 				String[] str = word.split(" ");
 				for (int i = 0; i < str.length; i++) {
-					list.add(str[i]);
+					UnorderedList.add(str[i]);
 				}
 				break;
 			}
@@ -39,7 +38,7 @@ public class UnorderedMain {
 		if (UnorderedList.search(searchItem)) {
 			UnorderedList.remove(searchItem);
 		} else {
-			list.add(searchItem);
+			UnorderedList.add(searchItem);
 		}
 
 		String out = "";

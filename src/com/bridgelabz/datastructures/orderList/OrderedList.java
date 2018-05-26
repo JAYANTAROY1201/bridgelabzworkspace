@@ -1,166 +1,66 @@
 package com.bridgelabz.datastructures.orderList;
 
+import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
+
 /**
  * purpose: To define a orderlist
+ * 
  * @author JAYANTA ROY
  * @version 1.0
  * @since 25-05-2018
  */
-public class OrderedList {
-	public static Node head;
-	public static Node tail;
-	static int count;
+public class OrderedList<G extends Comparable<G>> {
 
 	// to create a new empty list
-	public static OrderedList list() {
-		return new OrderedList();
+	public static <G extends Comparable<G>> OrderedList<G> orderedlist() {
+		return new OrderedList<G>();
 	}
 
 	// to add an item to the list
-	public void add(Comparable item) {
-		Node nodeToInsert = new Node(item);
-		Node current = null;
-
-		if (head == null || head.data.compareTo(nodeToInsert.data) >= 0) {
-			nodeToInsert.next = head;
-			head = nodeToInsert;
-			count++;
-			System.out.println(item + " added successfully");
-			return;
-		} else {
-			current = head;
-			tail = head;
-			while (current.next != null && current.next.data.compareTo(nodeToInsert.data) < 0) {
-				current = current.next;
-			}
-			nodeToInsert.next = current.next;
-			current.next = nodeToInsert;
-			count++;
-			System.out.println(item + " added successfully");
-
-			while (tail.next != null) {
-				tail = tail.next;
-			}
-			return;
-		}
+	public static <G extends Comparable<G>> void add(G item) {
+		SingleLinkedList.addSort(item);
 	}
 
 	// to find the size of the list
 	public static int size() {
-		return count;
+		return SingleLinkedList.size();
 	}
 
 	// to find a a list empty or not
 	public static boolean isEmpty() {
-		if (count == 0)
-			return true;
-		return false;
+		return SingleLinkedList.isEmpty();
 	}
 
 	// to return a index of a particular value
-	public static int index(Comparable item) {
-		int pos = 0;
-		Node temp = head;
-		while (temp.data.compareTo(item) != 0) {
-			temp = temp.next;
-			pos++;
-		}
-
-		return pos;
+	public static <G extends Comparable<G>> int index(G item) {
+		return SingleLinkedList.index(item);
 	}
 
 	// to check whethrt the item is present or not
-	public static boolean search(Comparable item) {
+	public static<G extends Comparable<G>> boolean search(G item) {
 
-		Node temp = head;
-		if (tail.data.compareTo(item) == 0)
-			return true;
-		while (temp.next != null) {
-			if (temp.data.compareTo(item) == 0)
-				return true;
-			else {
-				temp = temp.next;
-			}
-		}
-		return false;
+		return SingleLinkedList.search(item);
 	}
 
 	// to remove a specified item from the list
-	public static void remove(Comparable item) {
-		Node temp = head, prev = null;
-		if (temp != null && temp.data.compareTo(item) == 0) {
-			head = temp.next; // Changed head
-			count--;
-			System.out.println(item + " removed successfully");
-			return;
-		}
-		while (temp != null && temp.data.compareTo(item) != 0) {
-			prev = temp;
-			temp = temp.next;
-		}
-		if (temp == null) {
-			System.out.println("Element not found");
-		} else {
-			prev.next = temp.next;
-			count--;
-			System.out.println(item + " removed successfully");
-		}
+	public static <G extends Comparable<G>> void remove(G item) {
+		SingleLinkedList.remove(item);
 	}
 
 	// to fetch the last item as well as to remove it
-	public static Comparable pop() {
-		Node current = head;
-		Node nextNode = current.next;
-		if (head.next == null) {
-			Comparable c = head.data;
-			head = null;
-			count--;
-			return c;
-		}
-		while (nextNode.next != null) {
-			current = current.next;
-			nextNode = current.next;
-		}
-		Comparable c = nextNode.data;
-		current.next = null;
-		count--;
-		return c;
+	public static <G extends Comparable<G>> G pop() {
+
+		return SingleLinkedList.pop();
 	}
 
 	public static void display() {
-		System.out.println();
-		Node temp = head;
-		for (int i = 1; i <= size(); i++) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-		System.out.println();
+		SingleLinkedList.display();
 	}
 
 	// to fetch an item from specified position and to revove it
-	public static Comparable pop(int pos) {
-		pos = pos - 1;
-		Node current = head, prev = null;
-		if (pos == 0) {
-			Comparable c = head.data;
-			head = current.next; // Changed head
-			count--;
-			return c;
-		}
-		for (int i = 0; i < pos; i++) {
-			prev = current;
-			current = current.next;
-		}
-		if (current == null) {
-			System.out.println("Element not found");
-			return null;
-		} 
-		else {
-			Comparable c = current.data;
-			prev.next = current.next;
-			count--;
-			return c;
-		}
+	public static <G extends Comparable<G>> G pop(int pos) {
 
+		return SingleLinkedList.removeByPosition(pos);
 	}
+
 }
