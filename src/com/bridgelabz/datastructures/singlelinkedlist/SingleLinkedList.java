@@ -193,6 +193,7 @@ public static<G extends Comparable<G>>void addFirst(G item) {
 		count--;
 		return c;
 	}
+<<<<<<< HEAD
     
 	
 	@SuppressWarnings("unchecked")
@@ -200,6 +201,9 @@ public static<G extends Comparable<G>>void addFirst(G item) {
 	{
 		return ((G)head.data);
 	}
+=======
+
+>>>>>>> 257a06d102d8e57171360e0d183ac6c83f3d29a9
 	@SuppressWarnings("unchecked")
 	public static <G extends Comparable<G>> void display() {
 		System.out.println();
@@ -211,7 +215,11 @@ public static<G extends Comparable<G>>void addFirst(G item) {
 		System.out.println();
 	}
 
+<<<<<<< HEAD
 // to fetch an item from specified position and to remove it
+=======
+// to fetch an item from specified position and to revove it
+>>>>>>> 257a06d102d8e57171360e0d183ac6c83f3d29a9
 	@SuppressWarnings("unchecked")
 	public static <G extends Comparable<G>> G removeByPosition(int pos) {
 		pos = pos - 1;
