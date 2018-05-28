@@ -6,89 +6,80 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.bridgelabz.datastructures.orderList.OrderedList;
 import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
+import com.bridgelabz.datastructures.stack.Stack;
 import com.bridgelabz.utility.Utility;
-
+/**
+ * PURPOSE: TO OBTAIN A NUMBER CHAINING
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since 28-05-2018
+ */
 public class NumberChaining<G extends Comparable<G>> {
 
 	@SuppressWarnings({ "static-access", "unchecked" })
 	public static void main(String[] args) {
 		
 		File f = new File("/home/administrator/eclipse-workspace/BridgelabzModules/numberchain.txt");		
+		FileReader fr = null;
 		int count = 0;
-		int chainSize=11;
-		ArrayList<Integer> array=new ArrayList<Integer>();
+		ArrayList l = new ArrayList();
 		BufferedReader br = null;
+		FileWriter fw = null;
 		try {
-			br = new BufferedReader(new FileReader(f));
+			fr = new FileReader(f);
+			br = new BufferedReader(fr);
 			String word = br.readLine();
-			System.out.print(word + "");
-			System.out.println();
-			while (word != null) {
+			System.out.println(word);
+			while ((word != null)) {
 				String[] str = word.split(" ");
 				for (int i = 0; i < str.length; i++) {
 					count++;
-					array.add(Integer.parseInt(str[i]));
+					l.add((Integer.parseInt(str[i])));;
 				}
-				
 				break;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
-	
 		
-		ArrayList<E>[] chain=new ArrayList<E>();
-		
-		for(int i=0;i<chainSize;i++)
-		{
-			chain[i]=new SingleLinkedList<Integer>();
+	
+		ArrayList array[]=new ArrayList[11];
+		for(int i=0;i<11;i++) {
+			array[i]=new ArrayList();
 		}
 		
-		for(int i=0;i<array.size();i++)
-		{
-			System.out.println("this c "+array.get(i));
-			int rem=((int)array.get(i))%11;
-			System.out.println("item will go into "+((array.get(i))%11));
-			chain[rem].add((Integer)array.get(i));
+		
+		
+		for(int i=0;i<l.size();i++) {
+			int item=(int) l.get(i);
+			//System.out.println(item);
+			int index= item%11;
+			array[index].add(item);
 		}
-	    chain[3].display();
-//		System.out.println("enter search item:");
-//		int search=Utility.readInteger();
-//		if(!(array.contains(search))) {
-//			System.out.println("item will go into "+(search%11));
-//			chain[search%11].add(search);
-//			
-//		}
-//		else
-//		{
-//			chain[search%11].remove(search);
-//		}
-//		
-//		String out="";
-//		for(int i=0;i<11;i++)
-//		{
-//			int blockSize=chain[i].size();
-//			for (int j=0;j<blockSize;j++)
-//			{
-//				out+=chain[i].pop()+" ";
-//			}
-//		}
-//		
-//		System.out.println(out);
-//		try {
-//			BufferedWriter writer = new BufferedWriter(new FileWriter(f));
-//			writer.write(out);
-//			System.out.println();
-//			System.out.println("file written successfully");
-//			writer.close();
-//		    } catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
+		
+		String temp="";
+		for(int i=0;i<11;i++) {	
+			int s=array[i].size();
+			for(int j=0;j<s;j++) {
+				temp=temp+array[i].get(j)+" ";
+			}
+		}
+		System.out.println("Printing string "+temp);
+		try {
+			fw=new FileWriter(f);
+			BufferedWriter bw=new BufferedWriter(fw);
+			bw.write(temp);
+			bw.close();
+			//bw.flush();
+			System.out.println();
+			System.out.println("File updated successfully");
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
 	}
 
 }

@@ -961,7 +961,7 @@ public class Utility {
 	/*
 	 * checkAnagram method to check anagram of two strings
 	 */
-	public static void checkAnagram(String str1, String str2) {
+	public static boolean checkAnagram(String str1, String str2) {
 		String temp1 = str1;
 		String temp2 = str2;
 		str1 = toRemoveSpace(str1);
@@ -973,11 +973,14 @@ public class Utility {
 		str2 = bubbleSortForString(str2);
 
 		if (str1.equals(str2)) {
-			System.out.println(temp1 + " & " + temp2 + " are anagrams");
+			//System.out.println(temp1 + " & " + temp2 + " are anagrams");
+			return true;
 		} else {
-			System.out.println(temp1 + " & " + temp2 + " are not anagrams");
+			//System.out.println(temp1 + " & " + temp2 + " are not anagrams");
+			return false;
 		}
 	}
+
 	// ___________________________________________________________________________________________________________
 
 	/*
@@ -1203,7 +1206,7 @@ public class Utility {
 	 * finding day for a given date
 	 */
 	public static void dayOfWeek(int d, int m, int y) {
-		if ((m == 4 || m == 6 || m == 9 || m == 11) && (d >= 30)) {
+		if ((m == 4 || m == 6 || m == 9 || m == 11) && (d > 30)) {
 			System.out.println("SORRY!!!The month you have entered doesn't have 31 days");
 		} else if (m == 2) {
 			if (y % 100 == 0) {

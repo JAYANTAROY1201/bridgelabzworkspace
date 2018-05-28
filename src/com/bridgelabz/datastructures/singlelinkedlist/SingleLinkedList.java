@@ -1,249 +1,249 @@
 package com.bridgelabz.datastructures.singlelinkedlist;
+/**
+ * PURPOSE: TO OBTAIN A SINGLE LINKEDLIST
+ * @author JAYANTA ROY
+ * @version 1.0
+ * @since 28-05-2018
+ */
+public class SingleLinkedList {
+	private Node first;
+	private Node tail;
+	int count;
 
-public class SingleLinkedList<G extends Comparable<G>> {
+	public static SingleLinkedList list() {
+		return new SingleLinkedList();
+	}
 
-	@SuppressWarnings("rawtypes")
-	public static Node head;
-	@SuppressWarnings("rawtypes")
-	public static Node tail;
-	static int count;
+	// to add a item to the list
+	public void add(Comparable item) {
+		if (first == null) {
+			first = new Node(item);
+			count++;
+			return;
+		}
+		Node last = first;
+		while (last.next != null) {
+			last = last.next;
+		}
+		last.next = new Node(item);
+		count++;
+	}
 
-	
-//add an item at last	
-	@SuppressWarnings("unchecked")
-	public static <G extends Comparable<G>> void add(G item) {
-		Node<G> temp = new Node<G>(item, null);
-		if (head == null) {
-			head = temp;
+	// to display in same line
+	public void display() {
+
+		Node last = first;
+		for (int i = 1; i <= size(); i++) {
+			System.out.print(last.data + " ");
+			last = last.next;
+		}
+	}
+
+	// to display with new line
+	public void displayln() {
+
+		Node last = first;
+		for (int i = 1; i <= size(); i++) {
+			System.out.println(last.data);
+			last = last.next;
+		}
+	}
+
+	// to add an item in sorted order
+	public void addSort(Comparable item) {
+		Node nodeToInsert = new Node(item);
+		Node current = null;
+
+		if (first == null || first.data.compareTo(nodeToInsert.data) >= 0) {
+			nodeToInsert.next = first;
+			first = nodeToInsert;
 			count++;
 			System.out.println(item + " added successfully");
 			return;
-		}
-
-		tail = head;
-		while (tail.next != null) {
-			tail = tail.next;
-		}
-		tail.next = temp;
-		tail = temp;
-		count++;
-		System.out.println(item + " added successfully");
-	}
-
-	
-//add an item to front
-@SuppressWarnings("unchecked")
-public static<G extends Comparable<G>>void addFirst(G item) {
-			Node<G> nodeToInsert = new Node<G>(item, null);
-			if (head == null) {
-				head = nodeToInsert;
-				count++;
-				System.out.println(item + " added successfully");
-				return;
+		} else {
+			current = first;
+			tail = first;
+			while (current.next != null && current.next.data.compareTo(nodeToInsert.data) < 0) {
+				current = current.next;
 			}
-			tail=head;
-			nodeToInsert.next=head;
-			head=nodeToInsert;
+			nodeToInsert.next = current.next;
+			current.next = nodeToInsert;
 			count++;
 			System.out.println(item + " added successfully");
-			
-			while(tail.next!=null)
-			{
-				tail=tail.next;
-			}
-				
-		}
-// to add an item in sorted order
-		@SuppressWarnings("unchecked")
-		public static <G extends Comparable<G>> void  addSort(G item) {
-			Node<G> nodeToInsert = new Node<G>(item);
-			Node<G> current = null;
 
-			if (head == null || head.data.compareTo(nodeToInsert.data) >= 0) {
-				nodeToInsert.next = head;
-				head = nodeToInsert;
-				count++;
-				System.out.println(item + " added successfully");
-				return;
-			} else {
-				current = head;
-				tail = head;
-				while (current.next != null && current.next.data.compareTo(nodeToInsert.data) < 0) {
-					current = current.next;
-				}
-				nodeToInsert.next = current.next;
-				current.next = nodeToInsert;
-				count++;
-				System.out.println(item + " added successfully");
-
-				while (tail.next != null) {
-					tail = tail.next;
-				}
-				return;
+			while (tail.next != null) {
+				tail = tail.next;
 			}
-		}
-
-//to insert an item to given position
-	@SuppressWarnings("unchecked")
-	public static <G extends Comparable<G>> void insert(int pos, G item) {
-		Node<G> nodeToInsert = new Node<G>(item);
-		if (pos > size()) {
-			System.out.println("Position not available");
-		}
-		if (pos == 1) {
-			nodeToInsert.next = head;
-			nodeToInsert = head;
-			count++;
-		} else {
-			int trans = 1;
-			Node<G> temp = head;
-			while (trans != pos - 1) {
-				temp = temp.next;
-				trans++;
-			}
-			Node<G> n = temp.next;
-			temp.next = nodeToInsert;
-			nodeToInsert.next = n;
-			count++;
+			return;
 		}
 	}
 
-	// to find the size of the list
-	public static int size() {
+	// to see first data
+	public Comparable peek() {
+		return first.data;
+	}
+
+	public void insert(Comparable item, int pos) {
+		if (pos > count)
+			throw new IndexOutOfBoundsException();
+		if (pos == 0) {
+			first = new Node(item, first);
+			count++;
+			return;
+		}
+		Node temp = first;
+		for (int i = 1; i < pos; i++) {
+			temp = temp.next;
+		}
+		temp.next = new Node(item, temp.next);
+		count++;
+	}
+
+	// to find out size
+	public int size() {
 		return count;
 	}
+//to get an item based on index
+	public Comparable get(int pos) {
 
-	// to find a a list empty or not
-	public static boolean isEmpty() {
-		if (count == 0)
-			return true;
+		if (pos == 0) {
+			
+			return first.data;
+		}
+		if(pos==1)
+		{
+			return first.next.data;
+		}
+		if (pos == size()) {
+			Node last = first;
+			for (int i = 1; i < size() - 1; i++) {
+				last = last.next;
+			}
+			return last.next.data;
+		}
+		Node last = first;
+		for (int i = 0; i < pos - 1; i++) {
+			last = last.next;
+		}
+		return last.next.data;
+	}
+	
+	// to search an item whether present or not
+
+	public boolean search(Comparable item) {
+		Node last = first;
+		while (last.next != null) {
+			if (last.data.compareTo(item) == 0) {
+				return true;
+			}
+			last = last.next;
+			if (last.data.compareTo(item) == 0) {
+				return true;
+			}
+
+		}
 		return false;
 	}
 
-	// to return a index of a particular value
-	@SuppressWarnings("unchecked")
-	public static <G extends Comparable<G>> int index(G item) {
-		int pos = 0;
-		Node<G> temp = head;
-		while (temp.data.compareTo(item) != 0) {
-			temp = temp.next;
-			pos++;
-		}
-		return pos;
-	}
-
-	// to check whethrt the item is present or not
-	@SuppressWarnings("unchecked")
-	public static <G extends Comparable<G>> boolean search(G item) {
-
-		Node<G> temp = head;
-		if (tail.data.compareTo(item) == 0)
-			return true;
-		while (temp.next != null) {
-			if (temp.data.compareTo(item) == 0)
-				return true;
-			else {
-				temp = temp.next;
+	// to find a value based on index
+	public int index(Comparable item) {
+		Node last = first;
+		int count = 1;
+		if (last.data.compareTo(item) == 0)
+			return count;
+		while (last.next != null) {
+			if (last.data.compareTo(item) == 0) {
+				return count;
+			}
+			count++;
+			last = last.next;
+			if (count == size()) {
+				return count;
 			}
 		}
+		return -1;
+	}
+
+	// to check whether the list empty or not
+	public boolean isEmpty() {
+		if (first == null)
+			return true;
 		return false;
 	}
 
-	// to remove a specified item from the list
-	@SuppressWarnings("unchecked")
-	public static <G extends Comparable<G>> void remove(G item) {
-		Node<G> temp = head, prev = null;
-		if (temp != null && temp.data.compareTo(item) == 0) {
-			head = temp.next; // Changed head
+	// to add an item at last
+	public void append(Comparable item) {
+		Node last = first;
+		while (last.next != null) {
+			last = last.next;
+		}
+		last.next = new Node(item, last.next);
+		count++;
+	}
+
+	// to remove an item
+	public void remove(Comparable item) {
+		if (first.data.compareTo(item) == 0) {
+			first = first.next;
 			count--;
-			System.out.println(item + " removed successfully");
 			return;
 		}
-		while (temp != null && temp.data.compareTo(item) != 0) {
-			prev = temp;
-			temp = temp.next;
-		}
-		if (temp == null) {
-			System.out.println("Element not found");
-		} else {
-			prev.next = temp.next;
-			count--;
-			System.out.println(item + " removed successfully");
+		Node last = first;
+		Node temp;
+		while (last.next != null) {
+			temp = last;
+			last = last.next;
+			if (last.data.compareTo(item) == 0) {
+				temp.next = temp.next.next;
+				count--;
+			}
 		}
 	}
 
-// to fetch the last item as well as to remove it
-	@SuppressWarnings("unchecked")
-	public static <G extends Comparable<G>> G pop() {
-		Node<G> current = head;
-		Node<G> nextNode = current.next;
-		if (head.next == null) {
-			G c = (G) head.data;
-			head = null;
-			count--;
-			return c;
-		}
-		while (nextNode.next != null) {
-			current = current.next;
-			nextNode = current.next;
-		}
-		G c = (G) nextNode.data;
-		current.next = null;
-		current=tail;
-		count--;
-		return c;
-	}
-<<<<<<< HEAD
-    
-	
-	@SuppressWarnings("unchecked")
-	public static <G extends Comparable<G>> G peek()
-	{
-		return ((G)head.data);
-	}
-=======
+	// to remove based on index
+	public Comparable pop(int pos) {
 
->>>>>>> 257a06d102d8e57171360e0d183ac6c83f3d29a9
-	@SuppressWarnings("unchecked")
-	public static <G extends Comparable<G>> void display() {
-		System.out.println();
-		Node<G> temp = head;
-		for (int i = 1; i <= size(); i++) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-		System.out.println();
-	}
-
-<<<<<<< HEAD
-// to fetch an item from specified position and to remove it
-=======
-// to fetch an item from specified position and to revove it
->>>>>>> 257a06d102d8e57171360e0d183ac6c83f3d29a9
-	@SuppressWarnings("unchecked")
-	public static <G extends Comparable<G>> G removeByPosition(int pos) {
-		pos = pos - 1;
-		Node<G> current = head, prev = null;
 		if (pos == 0) {
-			G c = (G) head.data;
-			head = current.next; // Changed head
+			Node temp = first;
+			first = first.next;
 			count--;
-			return c;
+			return temp.data;
 		}
-		for (int i = 0; i < pos; i++) {
-			prev = current;
-			current = current.next;
-		}
-		if (current == null) {
-			System.out.println("Element not found");
-			return null;
-		} else {
-			G c = (G) current.data;
-			prev.next = current.next;
+		if (pos == size()) {
+			Node last = first;
+			for (int i = 1; i < size() - 1; i++) {
+				last = last.next;
+			}
+			Node temp = last.next;
+			last.next = null;
 			count--;
-			return c;
+			return temp.data;
 		}
+		Node last = first;
+		for (int i = 1; i < pos - 1; i++) {
+			last = last.next;
+		}
+		Node temp = last.next;
+		last.next = last.next.next;
+		count--;
+		return temp.data;
 	}
-	
-	
+
+	// to remove last element and show
+	public Comparable pop() {
+		Node last = first;
+		if (first.next == null) {
+			Comparable c = first.data;
+			first = null;
+			count--;
+			return c;
+		}
+		for (int i = 1; i < size() - 1; i++) {
+			last = last.next;
+		}
+		Node temp = last.next;
+		last.next = null;
+		count--;
+		return temp.data;
+	}
 }

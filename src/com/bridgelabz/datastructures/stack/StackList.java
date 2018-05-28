@@ -3,37 +3,45 @@ package com.bridgelabz.datastructures.stack;
 import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
 
 /**
- * purpose: To implement a Stack
+ * purpose: To implement a Stack USING LINKED LIST
  * @author JAYANTA ROY
  * @version 1.0
  * @since 25-05-2018
  */
-public class StackList<G extends Comparable<G>> {
+public class StackList{
  
-	public static<G extends Comparable<G>> void push(G item)
+	static SingleLinkedList li= new SingleLinkedList();
+	public static void push(Comparable item)
 	{
-		SingleLinkedList.addFirst(item);
+		li.insert(item, 0);
 	}
 	
-	public static<G extends Comparable<G>> G pop()
+	public static Comparable pop()
 	{
-		return SingleLinkedList.removeByPosition(1);
+		return li.pop(0);
 	}
 	
-	public static<G extends Comparable<G>> G peek() 
+	public static Comparable peek() 
 	{
-	   return SingleLinkedList.peek();
+	   return li.peek();
 	}
 	
 	public static boolean isEmpty()
 	{
-		return SingleLinkedList.isEmpty();
+		return li.isEmpty();
 	}
 	
-	public static void size()
+	public static int size()
 	{
-		SingleLinkedList.size();
+		return li.size();
 	}
-	
-
+	public static int get(int index)
+	{
+		return (int)li.get(index);
+	}
+	//to display the stack
+		public void display()
+		{
+			li.displayln();
+		}
 }

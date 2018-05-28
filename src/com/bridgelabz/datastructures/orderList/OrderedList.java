@@ -1,5 +1,6 @@
 package com.bridgelabz.datastructures.orderList;
 
+
 import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
 
 /**
@@ -9,58 +10,60 @@ import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
  * @version 1.0
  * @since 25-05-2018
  */
-public class OrderedList<G extends Comparable<G>> {
+public class OrderedList {
+
+	static SingleLinkedList li=new SingleLinkedList();
 
 	// to create a new empty list
-	public static <G extends Comparable<G>> OrderedList<G> orderedlist() {
-		return new OrderedList<G>();
+	public static  OrderedList orderedlist() {
+		return new OrderedList();
 	}
 
 	// to add an item to the list
-	public static <G extends Comparable<G>> void add(G item) {
-		SingleLinkedList.addSort(item);
+	public static void add(Comparable item) {
+		li.addSort(item);
 	}
 
 	// to find the size of the list
 	public static int size() {
-		return SingleLinkedList.size();
+		return li.size();
 	}
 
 	// to find a a list empty or not
 	public static boolean isEmpty() {
-		return SingleLinkedList.isEmpty();
+		return li.isEmpty();
 	}
 
 	// to return a index of a particular value
-	public static <G extends Comparable<G>> int index(G item) {
-		return SingleLinkedList.index(item);
+	public static  int index(Comparable item) {
+		return li.index(item);
 	}
 
 	// to check whethrt the item is present or not
-	public static<G extends Comparable<G>> boolean search(G item) {
+	public static boolean search(Comparable item) {
 
-		return SingleLinkedList.search(item);
+		return li.search(item);
 	}
 
 	// to remove a specified item from the list
-	public static <G extends Comparable<G>> void remove(G item) {
-		SingleLinkedList.remove(item);
+	public static  void remove(Comparable item) {
+		li.remove(item);
 	}
 
 	// to fetch the last item as well as to remove it
-	public static <G extends Comparable<G>> G pop() {
+	public static Comparable pop() {
 
-		return SingleLinkedList.pop();
+		return li.pop();
 	}
 
 	public static void display() {
-		SingleLinkedList.display();
+		li.display();
 	}
 
 	// to fetch an item from specified position and to revove it
-	public static <G extends Comparable<G>> G pop(int pos) {
+	public static  Comparable pop(int pos) {
 
-		return SingleLinkedList.removeByPosition(pos);
+		return li.pop(pos);
 	}
 
 }

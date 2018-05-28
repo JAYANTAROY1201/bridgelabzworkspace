@@ -7,37 +7,38 @@ import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
  * @author JAYANTA ROY
  * @version 1.0
  * @since 25/05/2018
- * @param <G>
  */
-public class Queue<G extends Comparable<G>> {
+public class Queue {
 
-	public static <G extends Comparable<G>> Queue<G> queue() {
-		return new Queue<G>();
+	static SingleLinkedList li=new SingleLinkedList();
+	
+	public static  Queue queue() {
+		return new Queue();
 	}
 
 	// to add an item to the list
-	public static <G extends Comparable<G>> void enqueue(G item) {
-		SingleLinkedList.add(item);
+	public static  void enqueue(Comparable item) {
+		li.add(item);
 	}
 
 	// to fetch the first item as well as to remove it
-	public static <G extends Comparable<G>> G dequeue() {
+	public static Comparable dequeue() {
 
-		return SingleLinkedList.removeByPosition(1);
+		return li.pop(0);
 	}
 
 	// to find a a list empty or not
 	public static boolean isEmpty() {
-		return SingleLinkedList.isEmpty();
+		return li.isEmpty();
 	}
 
 	// to find the size of the list
-	public static <G extends Comparable<G>> int size() {
-		return SingleLinkedList.size();
+	public static  int size() {
+		return li.size();
 	}
 
 	// to display
 	public static void display() {
-		SingleLinkedList.display();
+		li.displayln();
 	}
 }
