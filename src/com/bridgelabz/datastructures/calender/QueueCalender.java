@@ -1,7 +1,7 @@
 package com.bridgelabz.datastructures.calender;
 
 import com.bridgelabz.datastructures.queue.Queue;
-import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
+
 /**
  * Purpose: implement a calender using queue
  * @author Jayanta Roy
@@ -48,9 +48,7 @@ public class QueueCalender {
 				}
 			}
 		}
-		
-		//System.out.println("printing");
-		//System.out.println(a[0][6].size());
+
 		System.out.println(months[m] + " " + y);
 		System.out.println();
 		for (int i = 0; i < 7; i++) {
@@ -63,8 +61,6 @@ public class QueueCalender {
 				System.out.print(a[i][j].dequeue() + "  ");
 			}
 			System.out.println();
-		}
-		
+		}		
 	}
-
 }

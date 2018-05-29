@@ -77,7 +77,7 @@ public class Utility {
 	/*
 	 * PrintOneDimensionArray method to print a 1d array in matrix form
 	 */
-	public static void PrintOneDimensionArray(Integer[] a) {
+	public static void printOneDimensionArray(Integer[] a) {
 
 		System.out.println("Your array is as below:");
 
@@ -139,7 +139,7 @@ public class Utility {
 	 * PrintTwoDimensionArray method to print a 2d array in matrix form
 	 */
 
-	public static void PrintTwoDimensionArray(int[][] a) {
+	public static void printTwoDimensionArray(int[][] a) {
 		System.out.println();
 		System.out.println();
 		System.out.println("Your array is as below:");
@@ -378,7 +378,7 @@ public class Utility {
 	 * euclidean_distance method to find distance between two points
 	 */
 
-	public void CalculateEuclieanDistance(double x, double y) {
+	public void calculateEuclieanDistance(double x, double y) {
 		double result;
 		result = Math.sqrt((Math.pow(x, 2) + Math.pow(y, 2)));
 
@@ -392,19 +392,14 @@ public class Utility {
 	 */
 	public void findingRoots(int a, int b, int c) {
 		int delta;
-		double root_1_of_x, root_2_of_x;
-
+		
 		System.out.println();
 		System.out.println("your equation is: " + a + "*x^2 + " + b + "*x + (" + c + ")");
 		System.out.println();
 
 		delta = ((b * b) - (4 * a * c));
-		root_1_of_x = (((0 - b) + Math.sqrt(delta)) / (2 * a));
-		root_2_of_x = (((0 - b) - Math.sqrt(delta)) / (2 * a));
-		// System.out.println(Math.sqrt(delta));
-
-		System.out.println("First root of x is:" + root_1_of_x);
-		System.out.println("Second root of x is:" + root_2_of_x);
+		System.out.println("First root of x is:" + (((0 - b) + Math.sqrt(delta)) / (2 * a)));
+		System.out.println("Second root of x is:" +(((0 - b) - Math.sqrt(delta)) / (2 * a)));
 
 	}
 
@@ -449,6 +444,9 @@ public class Utility {
 				endTime = System.nanoTime(); // Get the current system time in nano second.
 				temp = 1;
 				break;
+				
+			default: System.err.println("Invalid input");
+			break;
 			}
 		}
 		System.out.println("Starting time is : " + startTime + " ns");
@@ -514,47 +512,20 @@ public class Utility {
 		return ((c1 != ' ') && (c1 == c2) && (c2 == c3));
 	}
 
-	/*
-	 * to check equality of rows
-	 */
-	private static boolean rowWin(char[] board) {
-		if ((checkEqual(board[0], board[1], board[2])) || (checkEqual(board[3], board[4], board[5]))
-				|| (checkEqual(board[6], board[7], board[8]))) {
-			return true;
-
-		}
-		return false;
-	}
-
-	/*
-	 * to check equality of columns
-	 */
-	private static boolean colWin(char[] board) {
-
-		if ((checkEqual(board[0], board[3], board[6])) || (checkEqual(board[1], board[4], board[7]))
-				|| (checkEqual(board[2], board[5], board[8]))) {
-			return true;
-
-		}
-		return false;
-	}
-
-	/*
-	 * to check equality of diagonal
-	 */
-	private static boolean diagonalWin(char[] board) {
-
-		if ((checkEqual(board[0], board[4], board[8])) || (checkEqual(board[2], board[4], board[6]))) {
-			return true;
-		}
-		return false;
-	}
-
-	/*
-	 * to check winning
-	 */
 	public static boolean checkForWin(char[] board) {
-		return (rowWin(board) || colWin(board) || diagonalWin(board));
+
+		if (       checkEqual(board[0], board[3], board[6]) 
+				|| checkEqual(board[1], board[4], board[7])
+				|| checkEqual(board[2], board[5], board[8])
+				|| checkEqual(board[0], board[4], board[8]) 
+				|| checkEqual(board[2], board[4], board[6]) 
+				|| checkEqual(board[0], board[1], board[2]) 
+				|| checkEqual(board[3], board[4], board[5])
+				|| checkEqual(board[6], board[7], board[8])) {
+			return true;
+
+		}
+		return false;
 	}
 
 	/*
@@ -962,8 +933,7 @@ public class Utility {
 	 * checkAnagram method to check anagram of two strings
 	 */
 	public static boolean checkAnagram(String str1, String str2) {
-		String temp1 = str1;
-		String temp2 = str2;
+		
 		str1 = toRemoveSpace(str1);
 		str1 = convertLowerCase(str1);
 		str1 = bubbleSortForString(str1);

@@ -13,10 +13,10 @@ public class InsertionSortGeneric {
 	public static void main(String[] args) {
 		Integer[] a = Utility.createOneDimensionalIntArray();
 		System.out.println("Before sorting");
-		Utility.PrintOneDimensionArray(a);
+		Utility.printOneDimensionArray(a);
 		Utility.insertionSortForInt(a);
 		System.out.println();
 		System.out.println("After sorting");
-		Utility.PrintOneDimensionArray(Utility.insertionSortGeneric(a));
+		Utility.printOneDimensionArray(Utility.insertionSortGeneric(a));
 	}
 }

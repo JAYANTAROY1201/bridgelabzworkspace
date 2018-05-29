@@ -16,6 +16,6 @@ public class Distance {
 		y = Integer.parseInt(args[1]);
 
 		Utility util = new Utility();
-		util.CalculateEuclieanDistance(x, y);
+		util.calculateEuclieanDistance(x, y);
 	}
 }

@@ -12,6 +12,6 @@ public class BubbleSortOfIntegers {
 	public static void main(String[] args) {
 		Integer a[] = Utility.createOneDimensionalIntArray();
 		System.out.println("After sorting");
-		Utility.PrintOneDimensionArray(Utility.bubbleSortForInt(a));
+		Utility.printOneDimensionArray(Utility.bubbleSortForInt(a));
 	}
 }

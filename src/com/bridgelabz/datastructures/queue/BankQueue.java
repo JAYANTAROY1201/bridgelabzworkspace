@@ -1,6 +1,6 @@
 package com.bridgelabz.datastructures.queue;
 
-import com.bridgelabz.datastructures.queue.UtilityQueue;;
+import com.bridgelabz.datastructures.queue.UtilityQueue;
 
 /**
  * purpose: To create a simple banking transaction using queue

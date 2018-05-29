@@ -11,6 +11,6 @@ import com.bridgelabz.utility.Utility;
 public class TwoDimensionArray {
 
 	public static void main(String[] args) {
-		Utility.PrintTwoDimensionArray(Utility.createTwodIntArray());
+		Utility.printTwoDimensionArray(Utility.createTwodIntArray());
 	}
 }

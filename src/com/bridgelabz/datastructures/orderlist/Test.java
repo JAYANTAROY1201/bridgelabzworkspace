@@ -1,4 +1,4 @@
-package com.bridgelabz.datastructures.orderList;
+package com.bridgelabz.datastructures.orderlist;
 
 /**
  * purpose: To test orderedlist

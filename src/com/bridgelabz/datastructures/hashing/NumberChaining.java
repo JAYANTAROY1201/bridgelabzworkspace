@@ -6,12 +6,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import com.bridgelabz.datastructures.orderList.OrderedList;
-import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
-import com.bridgelabz.datastructures.stack.Stack;
-import com.bridgelabz.utility.Utility;
 /**
  * PURPOSE: TO OBTAIN A NUMBER CHAINING
  * @author JAYANTA ROY
@@ -25,7 +19,6 @@ public class NumberChaining<G extends Comparable<G>> {
 		
 		File f = new File("/home/administrator/eclipse-workspace/BridgelabzModules/numberchain.txt");		
 		FileReader fr = null;
-		int count = 0;
 		ArrayList l = new ArrayList();
 		BufferedReader br = null;
 		FileWriter fw = null;
@@ -37,8 +30,7 @@ public class NumberChaining<G extends Comparable<G>> {
 			while ((word != null)) {
 				String[] str = word.split(" ");
 				for (int i = 0; i < str.length; i++) {
-					count++;
-					l.add((Integer.parseInt(str[i])));;
+					l.add((Integer.parseInt(str[i])));
 				}
 				break;
 			}

@@ -14,10 +14,10 @@ public class InsertionSortForInteger {
 	public static void main(String[] args) {
 		Integer[] ar = Utility.createOneDimensionalIntArray();
 		System.out.println(" Before sorting");
-		Utility.PrintOneDimensionArray(ar);
+		Utility.printOneDimensionArray(ar);
 		Utility.insertionSortForInt(ar);
 		System.out.println();
 		System.out.println(" After sorting");
-		Utility.PrintOneDimensionArray(Utility.insertionSortForInt(ar));
+		Utility.printOneDimensionArray(Utility.insertionSortForInt(ar));
 	}
 }

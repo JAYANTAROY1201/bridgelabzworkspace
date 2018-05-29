@@ -32,7 +32,7 @@ public class SortingTime {
 
 		starttime = System.nanoTime();
 		Integer[] a = Utility.bubbleSortForInt(array);
-		Utility.PrintOneDimensionArray(a);
+		Utility.printOneDimensionArray(a);
 		System.out.println();
 		endtime = System.nanoTime();
 		time.put(endtime - starttime, "Bubble sort for integers");
@@ -58,14 +58,14 @@ public class SortingTime {
 
 		starttime = System.nanoTime();
 		Integer[] arr = Utility.insertionSortForInt(array);
-		Utility.PrintOneDimensionArray(arr);
+		Utility.printOneDimensionArray(arr);
 		System.out.println();
 		endtime = System.nanoTime();
 		time.put(endtime - starttime, "insertion sort for Integer");
 
 		starttime = System.nanoTime();
 		Utility.insertionSortForString(str);
-		Utility.PrintOneDimensionArray(arr);
+		Utility.printOneDimensionArray(arr);
 		System.out.println();
 		endtime = System.nanoTime();
 		time.put(endtime - starttime, "insertion sort for String");

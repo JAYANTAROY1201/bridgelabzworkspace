@@ -1,4 +1,4 @@
-package com.bridgelabz.datastructures.orderList;
+package com.bridgelabz.datastructures.orderlist;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -37,15 +37,15 @@ public class OrderedListMain {
 			e.printStackTrace();
 		}
 
-		if (OrderedList.search(searchItem)) {
-			OrderedList.remove(searchItem);
+		if (ol.search(searchItem)) {
+			ol.remove(searchItem);
 		} else {
 			ol.add(searchItem);
 		}
 
 		String out = "";
-		while (OrderedList.size() > 0) {
-			out = OrderedList.pop() + " " + out;
+		while (ol.size() > 0) {
+			out = ol.pop() + " " + out;
 		}
 
 		try {

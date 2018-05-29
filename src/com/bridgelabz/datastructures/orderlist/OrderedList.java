@@ -1,4 +1,4 @@
-package com.bridgelabz.datastructures.orderList;
+package com.bridgelabz.datastructures.orderlist;
 
 
 import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
@@ -12,56 +12,56 @@ import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
  */
 public class OrderedList {
 
-	static SingleLinkedList l=new SingleLinkedList();
+	 SingleLinkedList l=new SingleLinkedList();
 
 	// to create a new empty list
-	public static  OrderedList orderedlist() {
+	public  static OrderedList orderedlist() {
 		return new OrderedList();
 	}
 
 	// to add an item to the list
-	public static void add(Comparable item) {
+	public void add(Comparable item) {
 		l.addSort(item);
 	}
 
 	// to find the size of the list
-	public static int size() {
+	public int size() {
 		return l.size();
 	}
 
 	// to find a a list empty or not
-	public static boolean isEmpty() {
+	public boolean isEmpty() {
 		return l.isEmpty();
 	}
 
 	// to return a index of a particular value
-	public static  int index(Comparable item) {
+	public  int index(Comparable item) {
 		return l.index(item);
 	}
 
 	// to check whethrt the item is present or not
-	public static boolean search(Comparable item) {
+	public  boolean search(Comparable item) {
 
 		return l.search(item);
 	}
 
 	// to remove a specified item from the list
-	public static  void remove(Comparable item) {
+	public void remove(Comparable item) {
 		l.remove(item);
 	}
 
 	// to fetch the last item as well as to remove it
-	public static Comparable pop() {
+	public Comparable pop() {
 
 		return l.pop();
 	}
 
-	public static void display() {
+	public void display() {
 		l.display();
 	}
 
 	// to fetch an item from specified position and to revove it
-	public static  Comparable pop(int pos) {
+	public Comparable pop(int pos) {
 
 		return l.pop(pos);
 	}
