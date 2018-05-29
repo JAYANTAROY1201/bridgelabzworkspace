@@ -11,7 +11,7 @@ public class PalindromeCheck {
 
 	public static void main(String[] args) {
 		
-		DequeList myDeque=new DequeList();
+	    
 		System.out.println("enter your string to check palindrome");
 		String str=Utility.readString();
 

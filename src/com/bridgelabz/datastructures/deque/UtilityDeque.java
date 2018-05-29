@@ -8,15 +8,18 @@ package com.bridgelabz.datastructures.deque;
  */
 public class UtilityDeque {
 
+	
 	public static boolean checkPalindromeByDeque(String str) {
+		
+		DequeList deque=new DequeList();
 		char[] ch = str.toCharArray();
 		for (int i = 0; i < ch.length; i++) {
-			DequeList.addRear(ch[i]);
+			deque.addRear(ch[i]);
 		}
 
-		int endLimit = DequeList.size() / 2;
+		int endLimit = deque.size() / 2;
 		for (int i = 0; i < endLimit; i++) {
-			if (DequeList.removeFront().compareTo(DequeList.removeRear()) != 0) {
+			if (deque.removeFront().compareTo(deque.removeRear()) != 0) {
 				return false;
 			}
 		}
