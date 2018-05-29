@@ -11,6 +11,8 @@ import java.util.Random;
 public class UtilityQueue {
 
 	public static void bankTransaction() {
+		
+		Queue line=Queue.queue();
 		int sum = 10000;
 		System.out.println("initial amount to the bank " + sum);
 		System.out.println();
@@ -18,7 +20,7 @@ public class UtilityQueue {
 		int noOfPerson = rand.nextInt(20);
 		System.out.println(noOfPerson + " people are in queue");
 		for (int i = 0; i < noOfPerson; i++) {
-			Queue.enqueue((i + 1) + " person");
+			line.enqueue((i + 1) + " person");
 		}
 		for (int i = 0; i < noOfPerson; i++) {
 			System.out.println("Press 1 to deposit");
@@ -30,7 +32,7 @@ public class UtilityQueue {
 				int depositMoney = com.bridgelabz.utility.Utility.readInteger();
 				sum = sum + depositMoney;
 				System.out.println("Transaction successfull");
-				Queue.dequeue();
+				line.dequeue();
 				System.out.println("person got out from queue");
 				break;
 
@@ -40,12 +42,12 @@ public class UtilityQueue {
 				if (withdrawMoney > sum) {
 					System.out.println("No enough money in the bank");
 					System.out.println("Transaction unsuccessfull");
-					Queue.dequeue();
+					line.dequeue();
 					System.out.println("person got out from queue");
 				} else {
 					sum = sum - withdrawMoney;
 					System.out.println("Transaction successfull");
-					Queue.dequeue();
+					line.dequeue();
 					System.out.println("person got out from queue");
 				}
 				break;

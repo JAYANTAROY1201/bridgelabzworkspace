@@ -16,6 +16,7 @@ import com.bridgelabz.utility.Utility;
 public class UnorderedMain {
 
 	public static void main(String[] args) {
+		UnorderedList list=UnorderedList.list();
 		File f = new File("/home/administrator/eclipse-workspace/BridgelabzModules/myFile2.txt");
 		System.out.println("Enter the word you want to search:");
 		String searchItem = Utility.readString();
@@ -27,7 +28,7 @@ public class UnorderedMain {
 			while (word != null) {
 				String[] str = word.split(" ");
 				for (int i = 0; i < str.length; i++) {
-					UnorderedList.add(str[i]);
+					list.add(str[i]);
 				}
 				break;
 			}
@@ -35,15 +36,15 @@ public class UnorderedMain {
 			e.printStackTrace();
 		}
 
-		if (UnorderedList.search(searchItem)) {
-			UnorderedList.remove(searchItem);
+		if (list.search(searchItem)) {
+			list.remove(searchItem);
 		} else {
-			UnorderedList.add(searchItem);
+			list.add(searchItem);
 		}
 
 		String out = "";
-		while (UnorderedList.size() > 0) {
-			out = UnorderedList.pop() + " " + out;
+		while (list.size() > 0) {
+			out = list.pop() + " " + out;
 		}
 
 		try {

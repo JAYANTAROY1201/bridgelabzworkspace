@@ -1206,32 +1206,19 @@ public class Utility {
 	 * finding day for a given date
 	 */
 	public static void dayOfWeek(int d, int m, int y) {
-		if ((m == 4 || m == 6 || m == 9 || m == 11) && (d > 30)) {
-			System.out.println("SORRY!!!The month you have entered doesn't have 31 days");
-		} else if (m == 2) {
-			if (y % 100 == 0) {
-				if (y % 400 != 0 && d > 28) {
-					System.out.println("This year is not a leap year......last date is 28 for this month!!");
-				} else if (y % 400 == 0 && d > 29) {
-					System.out.println("SORRY!! The year you've entered is a leap year so FEBRUARY has 29 days... ");
-				} else {
-					System.out.println("The day is " + getDay(d, m, y));
-				}
-			}
-			if (y % 100 != 0) {
-				if (y % 4 != 0 && d > 28) {
-					System.out.println("This year is not a leap year......last date is 28 for this month!!");
-				} else if (y % 4 == 0 && d > 29) {
-					System.out.println("SORRY!! The year you've entered is a leap year so FEBRUARY has 29 days... ");
-				} else {
-					System.out.println("The day is " + getDay(d, m, y));
-				}
-			}
-		} else if (d > 31) {
-			System.out.println("SORRY!!! No month has " + d + "  days");
-		} else {
-			System.out.println("The day is " + getDay(d, m, y));
-		}
+		if(((m == 4 || m == 6 || m == 9 || m == 11) && (d >30)) 
+				|| (d>31)
+				|| (m==2 && y % 100 == 0 && y % 400 != 0 && d > 28) 
+				|| (m==2 && y % 400 == 0 && d > 29)
+				|| (m==2 && y % 100 != 0 && y % 4 != 0 && d > 28) 
+				|| (m==2 && y % 100 != 0 && y % 4 == 0 && d > 29))
+		{
+			System.err.println("Invalid date");
+		} 
+        else {
+            System.out.println("The day is "+ getDay(d,m,y));
+        }		
+
 	}
 
 	private static String getDay(int d, int m, int y) {

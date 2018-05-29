@@ -15,8 +15,10 @@ l.push(10);
 l.push(50);
 l.push(79);
 l.display();
-System.out.println(l.get(2));
-System.out.println(l.get(3));
+//System.out.println(l.get(2));
+//System.out.println(l.get(3));
+//System.out.println(l.peek());
+System.out.println(l.pop());
 	}
 
 }

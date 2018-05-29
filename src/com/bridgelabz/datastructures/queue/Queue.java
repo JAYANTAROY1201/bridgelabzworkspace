@@ -3,42 +3,43 @@ package com.bridgelabz.datastructures.queue;
 import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
 
 /**
- * purpose: to create a queue
+ * purpose: to create a queue using list
  * @author JAYANTA ROY
  * @version 1.0
  * @since 25/05/2018
  */
 public class Queue {
 
-	static SingleLinkedList li=new SingleLinkedList();
-	
-	public static  Queue queue() {
+	SingleLinkedList l = SingleLinkedList.list();
+
+	// to return an empty queue
+	static Queue queue() {
 		return new Queue();
 	}
 
-	// to add an item to the list
-	public static  void enqueue(Comparable item) {
-		li.add(item);
+	// to add in the queue
+	public void enqueue(Comparable item) {
+		l.add(item);
 	}
 
-	// to fetch the first item as well as to remove it
-	public static Comparable dequeue() {
-
-		return li.pop(0);
+	// to display items
+	public void display() {
+		l.displayln();
 	}
 
-	// to find a a list empty or not
-	public static boolean isEmpty() {
-		return li.isEmpty();
+	// to remove an element
+	public Comparable dequeue() {
+		return (l.pop(0));
 	}
 
-	// to find the size of the list
-	public static  int size() {
-		return li.size();
+	// to find the size
+	public int size() {
+		return l.size();
 	}
 
-	// to display
-	public static void display() {
-		li.displayln();
+	// to check whether the queue is empty or not
+	boolean isEmpty() {
+		return l.isEmpty();
 	}
+
 }

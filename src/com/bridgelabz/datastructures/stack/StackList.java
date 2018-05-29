@@ -10,34 +10,35 @@ import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
  */
 public class StackList{
  
-	static SingleLinkedList li= new SingleLinkedList();
-	public static void push(Comparable item)
+	SingleLinkedList li= SingleLinkedList.list();
+	
+	public void push(Comparable item)
 	{
 		li.insert(item, 0);
 	}
 	
-	public static Comparable pop()
+	public  Comparable pop()
 	{
 		return li.pop(0);
 	}
 	
-	public static Comparable peek() 
+	public Comparable peek() 
 	{
 	   return li.peek();
 	}
 	
-	public static boolean isEmpty()
+	public  boolean isEmpty()
 	{
 		return li.isEmpty();
 	}
 	
-	public static int size()
+	public int size()
 	{
 		return li.size();
 	}
-	public static int get(int index)
+	public  int get(int index)
 	{
-		return (int)li.get(index);
+		return ((int)li.get(index));
 	}
 	//to display the stack
 		public void display()
