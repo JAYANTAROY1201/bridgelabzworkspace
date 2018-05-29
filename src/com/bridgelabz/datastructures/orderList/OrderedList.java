@@ -12,7 +12,7 @@ import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
  */
 public class OrderedList {
 
-	static SingleLinkedList li=new SingleLinkedList();
+	static SingleLinkedList l=new SingleLinkedList();
 
 	// to create a new empty list
 	public static  OrderedList orderedlist() {
@@ -21,49 +21,49 @@ public class OrderedList {
 
 	// to add an item to the list
 	public static void add(Comparable item) {
-		li.addSort(item);
+		l.addSort(item);
 	}
 
 	// to find the size of the list
 	public static int size() {
-		return li.size();
+		return l.size();
 	}
 
 	// to find a a list empty or not
 	public static boolean isEmpty() {
-		return li.isEmpty();
+		return l.isEmpty();
 	}
 
 	// to return a index of a particular value
 	public static  int index(Comparable item) {
-		return li.index(item);
+		return l.index(item);
 	}
 
 	// to check whethrt the item is present or not
 	public static boolean search(Comparable item) {
 
-		return li.search(item);
+		return l.search(item);
 	}
 
 	// to remove a specified item from the list
 	public static  void remove(Comparable item) {
-		li.remove(item);
+		l.remove(item);
 	}
 
 	// to fetch the last item as well as to remove it
 	public static Comparable pop() {
 
-		return li.pop();
+		return l.pop();
 	}
 
 	public static void display() {
-		li.display();
+		l.display();
 	}
 
 	// to fetch an item from specified position and to revove it
 	public static  Comparable pop(int pos) {
 
-		return li.pop(pos);
+		return l.pop(pos);
 	}
 
 }

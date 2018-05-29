@@ -238,7 +238,7 @@ public class SingleLinkedList {
 			count--;
 			return c;
 		}
-		for (int i = 1; i < size() - 1; i++) {
+		for (int j = 1; j < size() - 1; j++) {
 			last = last.next;
 		}
 		Node temp = last.next;

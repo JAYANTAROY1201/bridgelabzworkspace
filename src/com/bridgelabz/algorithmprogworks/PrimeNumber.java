@@ -11,12 +11,12 @@ import com.bridgelabz.utility.Utility;
 public class PrimeNumber {
 
 	public static void main(String[] args) {
-		int start;
-		System.out.println("Enter starting range");
-		start = Utility.readInteger();
-		int end;
-		System.out.println("Enter ending range");
-		end = Utility.readInteger();
-		Utility.findPrimeNumbers(start, end);
+		int starts;
+		System.out.println("Enter starting point");
+		starts = Utility.readInteger();
+		int ends;
+		System.out.println("Enter ending point");
+		ends = Utility.readInteger();
+		Utility.findPrimeNumbers(starts, ends);
 	}
 }

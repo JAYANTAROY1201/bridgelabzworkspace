@@ -29,9 +29,9 @@ public class StackCalender {
 			}
 		}
 		int d = 1;
-		String[] months = { " ", "January", "February", "March", "April", "May", "June", "July", "August", "September",
+		String[] monthArray = { " ", "January", "February", "March", "April", "May", "June", "July", "August", "September",
 				"October", "November", "December" };
-		String[] days = { " S", " M", " T", " W", "Th", " F", " S" };
+		String[] daysArray = { " S", " M", " T", " W", "Th", " F", " S" };
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 7; j++) {
 				first[i][j].push("  ");
@@ -63,16 +63,16 @@ public class StackCalender {
 
 		// System.out.println("printing");
 		// System.out.println(a[0][6].size());
-		System.out.println(months[m] + " " + y);
+		System.out.println(monthArray[m] + " " + y);
 		System.out.println();
 		for (int i = 0; i < 7; i++) {
-			System.out.print(days[i] + "  ");
+			System.out.print(daysArray[i] + "  ");
 		}
 		System.out.println();
 		System.out.println("--------------------------");
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 7; j++) {
-				System.out.print(a[i][j].pop() + "  ");
+		for (int x = 0; x < 6; x++) {
+			for (int y1 = 0; y1 < 7; y1++) {
+				System.out.print(a[x][y1].pop() + "  ");
 			}
 			System.out.println();
 		}

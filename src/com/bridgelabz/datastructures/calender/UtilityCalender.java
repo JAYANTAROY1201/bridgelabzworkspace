@@ -8,15 +8,15 @@ package com.bridgelabz.datastructures.calender;
  */
 public class UtilityCalender {
 
-	public static boolean dateValidator(int d, int m, int y) {
+	public static boolean dateValidator(int d, int month, int y) {
 
 		boolean b = true;
-		if(((m == 4 || m == 6 || m == 9 || m == 11) && (d >30)) 
+		if(((month == 4 || month == 6 || month == 9 || month == 11) && (d >30)) 
 				|| (d>31)
-				|| (m==2 && y % 100 == 0 && y % 400 != 0 && d > 28) 
-				|| (m==2 && y % 400 == 0 && d > 29)
-				|| (m==2 && y % 100 != 0 && y % 4 != 0 && d > 28) 
-				|| (m==2 && y % 100 != 0 && y % 4 == 0 && d > 29))
+				|| (month==2 && y % 100 == 0 && y % 400 != 0 && d > 28) 
+				|| (month==2 && y % 400 == 0 && d > 29)
+				|| (month==2 && y % 100 != 0 && y % 4 != 0 && d > 28) 
+				|| (month==2 && y % 100 != 0 && y % 4 == 0 && d > 29))
 		{
 			b = false;
 		} 

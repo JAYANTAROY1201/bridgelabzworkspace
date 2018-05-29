@@ -13,27 +13,27 @@ import com.bridgelabz.utility.Utility;
 public class PrimeAnagramQueue {
 	public static void main(String[]args) {
 		
-		Queue primeanagram=new Queue();
+		Queue primeanagrams=new Queue();
 		
-	 SingleLinkedList primes= new SingleLinkedList(); 
+	 SingleLinkedList prime= new SingleLinkedList(); 
 	 for(int i=0;i<1000;i++)
 	 {
 	   if(Utility.isPrime(i))
 		 {
-			 primes.add(i);
+			 prime.add(i);
 		 }
 	 }
 
-	 for(int i=0;i<primes.size()-1;i++)
+	 for(int i=0;i<prime.size()-1;i++)
 	 {
-		 for(int j=i+1;j<primes.size();j++)
+		 for(int j=i+1;j<prime.size();j++)
 		 {
-			 if(  Utility.checkAnagram((""+primes.get(i)),(""+primes.get(j))) )
+			 if(  Utility.checkAnagram((""+prime.get(i)),(""+prime.get(j))) )
 			 {
-				 primeanagram.enqueue(primes.get(i)+" & "+primes.get(j));
+				 primeanagrams.enqueue(prime.get(i)+" & "+prime.get(j));
 			 }
 		 }
 	 }
-	 primeanagram.display();
+	 primeanagrams.display();
 	}
 	}

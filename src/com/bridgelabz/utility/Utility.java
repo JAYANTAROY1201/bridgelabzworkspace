@@ -698,17 +698,17 @@ public class Utility {
 	public static void binarySearchForString(char[] a, int start, int end, char search) {
 
 		if (end >= start) {
-			int mid = start + (end - start) / 2;
+			int m = start + (end - start) / 2;
 
-			if (a[mid] == search) {
+			if (a[m] == search) {
 				System.out.println(search + " is present");
 				return;
 			}
 
-			if (a[mid] > search) {
-				binarySearchForString(a, start, mid - 1, search);
+			if (a[m] > search) {
+				binarySearchForString(a, start, m - 1, search);
 			} else {
-				binarySearchForString(a, mid + 1, end, search);
+				binarySearchForString(a, m + 1, end, search);
 			}
 		}
 

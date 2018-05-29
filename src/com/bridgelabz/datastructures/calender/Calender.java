@@ -13,9 +13,9 @@ public class Calender {
 		int y = Integer.parseInt(args[1]);
 		String[][] a = new String[6][7];
 		int d = 1;
-		String[] months = { " ", "January", "February", "March", "April", "May", "June", "July", "August", "September",
+		String[] month = { " ", "January", "February", "March", "April", "May", "June", "July", "August", "September",
 				           "October", "November", "December" };
-		String[] days = { " S", " M", " T", " W", "Th", " F", " S" };
+		String[] day = { " S", " M", " T", " W", "Th", " F", " S" };
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 7; j++) {
 				a[i][j] = "  ";
@@ -35,16 +35,16 @@ public class Calender {
 			}
 		}
 
-		System.out.println(months[m] + " " + y);
+		System.out.println(month[m] + " " + y);
 		System.out.println();
 		for (int i = 0; i < 7; i++) {
-			System.out.print(days[i] + "  ");
+			System.out.print(day[i] + "  ");
 		}
 		System.out.println();
-		System.out.println("--------------------------");
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 7; j++) {
-				System.out.print(a[i][j] + "  ");
+		System.out.println("-------------------------");
+		for (int k = 0; k < 6; k++) {
+			for (int l = 0; l < 7; l++) {
+				System.out.print(a[k][l] + "  ");
 			}
 			System.out.println();
 		}
