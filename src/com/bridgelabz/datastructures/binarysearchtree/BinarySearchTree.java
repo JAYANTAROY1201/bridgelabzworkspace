@@ -2,6 +2,12 @@ package com.bridgelabz.datastructures.binarysearchtree;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ *Purpose: To find the number of possible BST
+ * @author Jayanta Roy
+ * @version 1.0
+ * @since 30/05/2018
+ */
 public class BinarySearchTree {
 
 	public static void main(String[] args) {
@@ -14,7 +20,7 @@ public class BinarySearchTree {
 		}
 		for (int j = 0; j < test; j++) {
 			System.out.println("Possibe no. of binary search tree with " + nodes[j] + " node(s):"
-					+ UtilityBinarySearchTree.count(nodes[j]));
+					+ UtilityBinarySearchTree.countBST(nodes[j]));
 		}
 	}
 }
