@@ -6,6 +6,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
+import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
+import com.bridgelabz.utility.Utility;
+
 
 /**
  * PURPOSE: TO OBTAIN A NUMBER CHAINING 
@@ -13,14 +16,14 @@ import java.util.ArrayList;
  * @version 1.0
  * @since 28-05-2018
  */
-public class NumberChaining<G extends Comparable<G>> {
+public class NumberChaining {
 
 	@SuppressWarnings({ "unchecked" })
 	public static void main(String[] args) {
 
 		File f = new File("/home/administrator/eclipse-workspace/BridgelabzModules/numberchain.txt");
 		FileReader fr = null;
-		ArrayList l = new ArrayList();
+		SingleLinkedList l = new SingleLinkedList();
 		BufferedReader br = null;
 		FileWriter fw = null;
 		try {
@@ -38,15 +41,26 @@ public class NumberChaining<G extends Comparable<G>> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		ArrayList array[] = new ArrayList[11];
+        
+		System.out.println("enter search no:");
+		int search=Utility.readInteger();
+		
+		if(l.search(search))
+		{
+			l.remove(search);
+		}
+		else
+		{
+			l.add(search);
+		}
+		
+		SingleLinkedList array[] = new SingleLinkedList[11];
 		for (int i = 0; i < 11; i++) {
-			array[i] = new ArrayList();
+			array[i] = new SingleLinkedList();
 		}
 
 		for (int i = 0; i < l.size(); i++) {
 			int item = (int) l.get(i);
-			// System.out.println(item);
 			int index = item % 11;
 			array[index].add(item);
 		}

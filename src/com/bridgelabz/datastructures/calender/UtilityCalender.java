@@ -14,33 +14,26 @@ public class UtilityCalender {
 	public static boolean dateValidator(int d, int month, int y) {
 
 		boolean b = true;
-		if(((month == 4 || month == 6 || month == 9 || month == 11) && (d >30)) 
-				|| (d>31)
-				|| (month==2 && y % 100 == 0 && y % 400 != 0 && d > 28) 
-				|| (month==2 && y % 400 == 0 && d > 29)
-				|| (month==2 && y % 100 != 0 && y % 4 != 0 && d > 28) 
-				|| (month==2 && y % 100 != 0 && y % 4 == 0 && d > 29))
-		{
+		if (((month == 4 || month == 6 || month == 9 || month == 11) && (d > 30)) || (d > 31)
+				|| (month == 2 && y % 100 == 0 && y % 400 != 0 && d > 28) || (month == 2 && y % 400 == 0 && d > 29)
+				|| (month == 2 && y % 100 != 0 && y % 4 != 0 && d > 28)
+				|| (month == 2 && y % 100 != 0 && y % 4 == 0 && d > 29)) {
 			b = false;
-		} 
-        else {
-            b=true;
-        }		
+		} else {
+			b = true;
+		}
 		return b;
-}
-	
-	public static int dayStart(int d,int m,int y)
-	{
+	}
+
+	public static int dayStart(int d, int m, int y) {
 		int y0 = y - (14 - m) / 12;
 		int x = y0 + (y0 / 4) - (y0 / 100) + (y0 / 400);
 		int m0 = m + 12 * ((14 - m) / 12) - 2;
 		return ((d + x + (31 * m0) / 12) % 7);
-		
-		
+
 	}
-	
-	public static void stackCalender(int m,int y)
-	{
+
+	public static void stackCalender(int m, int y) {
 		StackList first[][] = new StackList[6][];
 		for (int i = 0; i < 6; i++) {
 			first[i] = new StackList[7];
@@ -57,8 +50,8 @@ public class UtilityCalender {
 			}
 		}
 		int d = 1;
-		String[] monthArray = { " ", "January", "February", "March", "April", "May", "June", "July", "August", "September",
-				"October", "November", "December" };
+		String[] monthArray = { " ", "January", "February", "March", "April", "May", "June", "July", "August",
+				"September", "October", "November", "December" };
 		String[] daysArray = { " S", " M", " T", " W", "Th", " F", " S" };
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 7; j++) {
@@ -104,33 +97,30 @@ public class UtilityCalender {
 		}
 
 	}
-	
-	public static void queueCalender(int m, int y)
-	{
-		Queue a[][]=new Queue[6][];
-		for(int i=0;i<6;i++)
-		{
-			a[i]=new Queue[7];
-			for( int j=0;j<7;j++)
-			{
-				a[i][j]=new Queue();
+
+	public static void queueCalender(int m, int y) {
+		Queue a[][] = new Queue[6][];
+		for (int i = 0; i < 6; i++) {
+			a[i] = new Queue[7];
+			for (int j = 0; j < 7; j++) {
+				a[i][j] = new Queue();
 			}
 		}
 		int d = 1;
 		String[] months = { " ", "January", "February", "March", "April", "May", "June", "July", "August", "September",
-				           "October", "November", "December" };
+				"October", "November", "December" };
 		String[] days = { " S", " M", " T", " W", "Th", " F", " S" };
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 7; j++) {
 				a[i][j].enqueue("  ");
 			}
 		}
-		
+
 		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j <7; j++) {
+			for (int j = 0; j < 7; j++) {
 				if (UtilityCalender.dateValidator(d, m, y)) {
 					j = UtilityCalender.dayStart(d, m, y);
-					if (d < 10) {						
+					if (d < 10) {
 						a[i][j].dequeue();
 						a[i][j].enqueue(" " + d);
 						d++;
@@ -155,6 +145,6 @@ public class UtilityCalender {
 				System.out.print(a[i][j].dequeue() + "  ");
 			}
 			System.out.println();
-		}		
+		}
 	}
 }

@@ -33,7 +33,7 @@ public class Prime2DArray {
 		
 		for (int i = 0; i < 10; i++) {
 				System.out.println("");
-				System.out.print(i+" row ---->");
+				System.out.print(i+1+" row ---->");
 				for (int j = 0; j < 100; j++) {
 					
 					array[i][j].display();

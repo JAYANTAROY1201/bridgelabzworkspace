@@ -38,7 +38,7 @@ public class Queue {
 	}
 
 	// to check whether the queue is empty or not
-	boolean isEmpty() {
+	public boolean isEmpty() {
 		return l.isEmpty();
 	}
 

@@ -13,7 +13,7 @@ public class Calender {
 		int y = Integer.parseInt(args[1]);
 		String[][] a = new String[6][7];
 		int d = 1;
-		String[] month = { " ", "January", "February", "March", "April", "May", "June", "July", "August", "September",
+		String[] month = { " ","January", "February", "March", "April", "May", "June", "July", "August", "September",
 				           "October", "November", "December" };
 		String[] day = { " S", " M", " T", " W", "Th", " F", " S" };
 		for (int i = 0; i < 6; i++) {

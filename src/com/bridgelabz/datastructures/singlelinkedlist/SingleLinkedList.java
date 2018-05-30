@@ -58,7 +58,7 @@ public class SingleLinkedList {
 			nodeToInsert.next = first;
 			first = nodeToInsert;
 			count++;
-			System.out.println(item + " added successfully");
+//			System.out.println(item + " added successfully");
 			return;
 		} else {
 			current = first;
@@ -69,7 +69,7 @@ public class SingleLinkedList {
 			nodeToInsert.next = current.next;
 			current.next = nodeToInsert;
 			count++;
-			System.out.println(item + " added successfully");
+//			System.out.println(item + " added successfully");
 
 			while (tail.next != null) {
 				tail = tail.next;
