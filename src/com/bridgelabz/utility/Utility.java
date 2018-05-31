@@ -287,7 +287,7 @@ public class Utility {
 
 	// _____________________________________________________________________________________________________________
 
-	/*
+	/**
 	 * playGambler method to find win and loss percentage of a gambler game
 	 */
 
@@ -324,10 +324,11 @@ public class Utility {
 	}
 	// _________________________________________________________________________________________________________________
 
-	/*
+	/**
 	 * coupon_generator method to find how many random numbers are needed to
 	 * generate a coupon
 	 */
+
 	public void generatorCouponCode(int lengthOfCoupon) {
 
 		int count = 0;
@@ -336,7 +337,7 @@ public class Utility {
 
 		Random r = new Random();
 		while (coupon.size() < lengthOfCoupon) {
-			code = r.nextInt();
+			code = r.nextInt((int)Math.pow(lengthOfCoupon, 2));
 			count++;
 			if (!coupon.contains(code)) {
 				coupon.add(code);
@@ -347,7 +348,7 @@ public class Utility {
 		System.out.println("You need total " + count + " random numbers to generate this coupon");
 
 		for (Integer i : coupon) {
-			System.out.println("coupon code" + i);
+			System.out.println("coupon code: " + i);
 		}
 	}
 
@@ -849,6 +850,7 @@ public class Utility {
 	 * mergeSort method to sort arrays
 	 */
 
+	@SuppressWarnings({ "rawtypes" })
 	public static Comparable[] mergeSort(Comparable[] a) {
 		// If a is empty; no need to do anything
 		if (a.length <= 1) {
@@ -870,6 +872,7 @@ public class Utility {
 		return a;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private static void merge(Comparable[] first, Comparable[] second, Comparable[] result) {
 		// Index Position in first array - starting with first element
 		int iFirst = 0;

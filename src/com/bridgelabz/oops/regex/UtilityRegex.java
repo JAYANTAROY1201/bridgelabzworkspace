@@ -10,7 +10,14 @@ import java.util.regex.Pattern;
  */
 public class UtilityRegex {
 
-	 public static String regexReplacement(String template,String regex,String replaceWith) {
+	 /**
+	 * Purpose: This method is written to replace a particular word with user given String
+	 * @param template
+	 * @param regex
+	 * @param replaceWith
+	 * @return modified String after replacing
+	 */
+	public static String regexReplacement(String template,String regex,String replaceWith) {
 	        Pattern pattern= Pattern.compile(regex);
 	        Matcher matcher= pattern.matcher(template);
 	        template=matcher.replaceAll(replaceWith);

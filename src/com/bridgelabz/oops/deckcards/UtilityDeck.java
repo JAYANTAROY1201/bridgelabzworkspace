@@ -6,7 +6,12 @@ import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
 
 public class UtilityDeck {
 
-//to distribue cards	
+
+	/**
+	 * Purpose: This method is written to distribute cards among 4 players
+	 * @param cards
+	 * @return 2D string array of players
+	 */
 	public static String[][] distributeCard(SingleLinkedList[] cards)
 	{
 	Random r=new Random();
@@ -29,7 +34,12 @@ public class UtilityDeck {
 	return players;
 	}//distribution end
 	
-//to rearrange card of each player	
+	
+	/**
+	 * Purpose: this method is written to sort rearrange the cards of each player 
+	 * @param players
+	 * @return arrange array
+	 */
 	public static SingleLinkedList[] rearranging(String[][] players) 
 	{
 	SingleLinkedList[] arrange=new SingleLinkedList[4];
@@ -45,7 +55,11 @@ public class UtilityDeck {
 	return arrange;
 	}//rearranging end
 
-//to show distribution of each player	
+
+/**
+ * Purpose: to show distribution of each player
+ * @param players
+ */
 public static void showDistribution(String[][]players)
 {
 	for(int i=0;i<4;i++)
@@ -63,7 +77,11 @@ System.out.println("************************************************************
 }//showing distribution end
 
 
-//to show after sorting card of each player
+//
+/**
+ * Purpose: to show after sorting card of each player
+ * @param arrange
+ */
 public static void showBySorted(SingleLinkedList[] arrange)
 {
   for(int i=0;i<4;i++)

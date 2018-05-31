@@ -12,7 +12,7 @@ public class GuessingGame {
 
 	public static void main(String[] args) throws InterruptedException {
 		int num = Integer.parseInt(args[0]);
-        num=(int)Math.pow(2,num);
+        num=(int)Math.pow(2,num)-1;
 		System.out.println("Think a number between 0 to " + num);
 
 		int[] a = new int[num + 1];

@@ -1,0 +1,51 @@
+
+ {
+	"Rice":[
+		{
+			"Name": "Basmati Rice",
+			"Weight in kg": "10",
+			"Price per kg": "100"
+		},
+		{
+			"Name": "Brown Rice",
+			"Weight in kg": "5",
+			"Price per kg": "150"
+		},
+		{
+			"Name": "Arborio Rice",
+			"Weight in kg": "10",
+			"Price per kg": "75"
+		},
+		{
+			"Name": "Pudding Rice",
+			"Weight in kg": "20",
+			"Price per kg": "50"
+		}
+		]
+	
+	"Wheat": [
+		{
+			"Name": "Punjabi Wheat",
+			"Weight in kg": 50,
+			"Price per kg": 20
+		}
+	]
+	"Pulses": [
+		{
+			"Name": "Red Lentils",
+			"Weight in kg": 50,
+			"Price per kg": 20
+		},
+		{
+			"Name": "Moong Bean",
+			"Weight in kg": 50,
+			"Price per kg": 20
+		},
+		{
+			"Name": "Yellow Pigeon Peas",
+			"Weight in kg": 50,
+			"Price per kg": 20
+		}
+	]
+}
+                   
