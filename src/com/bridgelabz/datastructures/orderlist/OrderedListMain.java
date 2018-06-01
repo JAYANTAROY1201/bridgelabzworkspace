@@ -36,7 +36,7 @@ public class OrderedListMain {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+        if(!ol.isEmpty())
 		if (ol.search(searchItem)) {
 			ol.remove(searchItem);
 		} else {

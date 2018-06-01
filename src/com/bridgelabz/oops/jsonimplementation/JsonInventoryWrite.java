@@ -7,6 +7,9 @@ import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.bridgelabz.oops.inventorymanagements.InventoryFactory;
 
 /**
  * Purpose: to print a inventory details by reading a json file and printing in console
@@ -23,6 +26,7 @@ public class JsonInventoryWrite {
 		int sumPulses = 0;
 		int totalPulses = 0;
 		JSONParser parser = new JSONParser();
+		JSONArray newArray=new JSONArray();
 		File f = new File("/home/administrator/eclipse-workspace/BridgelabzModules"
 				+ "/src/com/bridgelabz/oops/jsonimplementation/InventoryDeatils.json");
 		try {
@@ -35,7 +39,6 @@ public class JsonInventoryWrite {
 						* (Integer.parseInt(objrice.get("Price per kg").toString()));
 				totalRice += Integer.parseInt(objrice.get("Weight in kg").toString());
 			}
-
 			JSONArray wheat = (JSONArray) jsonObj.get("Wheat");
 			for (int i = 0; i < wheat.size(); i++) {
 				JSONObject objwheat = (JSONObject) (wheat.get(i));
@@ -57,11 +60,15 @@ public class JsonInventoryWrite {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		System.out.println("[{ \"Name\" : \"Rice\"," + "\"Total weight\" :" + totalRice + ",\"Total Price\" :" + sumRice
-				+ "}," + "{ \"Name\" : \"Wheat\"," + "\"Total weight\" :" + totalWheat + ",\"Total Price\" :" + sumWheat
-				+ "}," + "{ \"Name\" : \"Pulses\"," + "\"Total weight\" :" + totalPulses + ",\"Total Price\" :"
-				+ sumPulses + "}]");
+		try {
+			newArray = (JSONArray) parser.parse("[{ \"Name\" : \"Rice\"," + "\"Total weight\" :" + totalRice + ",\"Total Price\" :" + sumRice
+					+ "}," + "{ \"Name\" : \"Wheat\"," + "\"Total weight\" :" + totalWheat + ",\"Total Price\" :" + sumWheat
+					+ "}," + "{ \"Name\" : \"Pulses\"," + "\"Total weight\" :" + totalPulses + ",\"Total Price\" :"
+					+ sumPulses + "}]");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		System.out.println(newArray);
 	}
 
 }

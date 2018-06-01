@@ -23,28 +23,28 @@
 		}
 		]
 	
-	"Wheat": [
+,	"Wheat": [
 		{
 			"Name": "Punjabi Wheat",
 			"Weight in kg": 50,
-			"Price per kg": 20
+			"Price per kg": 70
 		}
 	]
-	"Pulses": [
+,	"Pulses": [
 		{
 			"Name": "Red Lentils",
 			"Weight in kg": 50,
-			"Price per kg": 20
+			"Price per kg": 90
 		},
 		{
 			"Name": "Moong Bean",
 			"Weight in kg": 50,
-			"Price per kg": 20
+			"Price per kg": 115
 		},
 		{
 			"Name": "Yellow Pigeon Peas",
 			"Weight in kg": 50,
-			"Price per kg": 20
+			"Price per kg": 65
 		}
 	]
 }

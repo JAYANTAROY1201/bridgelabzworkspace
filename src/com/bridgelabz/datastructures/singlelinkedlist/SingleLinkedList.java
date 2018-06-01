@@ -131,16 +131,16 @@ public class SingleLinkedList {
 	// to search an item whether present or not
 
 	public boolean search(Comparable item) {
-		Node last = first;
-		while (last.next != null) {
-			if (last.data.compareTo(item) == 0) {
+		Node temp = first;
+		if(temp.data.compareTo(item)==0)
+		{
+			return true;
+		}
+		while (temp.next != null) {
+			if (temp.data.compareTo(item) == 0) {
 				return true;
 			}
-			last = last.next;
-			if (last.data.compareTo(item) == 0) {
-				return true;
-			}
-
+			temp = temp.next;		
 		}
 		return false;
 	}
