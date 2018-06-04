@@ -132,6 +132,8 @@ public class SingleLinkedList {
 
 	public boolean search(Comparable item) {
 		Node temp = first;
+		if(first==null)
+			return false;
 		if(temp.data.compareTo(item)==0)
 		{
 			return true;
@@ -228,7 +230,24 @@ public class SingleLinkedList {
 		count--;
 		return temp.data;
 	}
-
+	public Comparable removeAt(int index) {
+        if (index == 0) {
+            Comparable temp = first.data;
+            first =  first.next;
+            count--;
+            return temp;
+        }
+        Node t = first;
+        int counter = 0;
+        while (counter < index - 1) {
+            t = t.next;
+            counter++;
+        }
+        Comparable temp = t.next.data;
+        t.next = t.next.next;
+        count--;
+        return temp;
+    }
 	// to remove last element and show
 	public Comparable pop() {
 		Node last = first;

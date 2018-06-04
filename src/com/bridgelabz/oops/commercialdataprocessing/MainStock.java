@@ -1,32 +1,42 @@
 package com.bridgelabz.oops.commercialdataprocessing;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+
+import java.io.IOException;
 import org.json.simple.parser.ParseException;
 
-import com.bridgelabz.datastructures.queue.Queue;
-import com.bridgelabz.datastructures.singlelinkedlist.SingleLinkedList;
+import com.bridgelabz.utility.Utility;
 
+/**
+ * purpose: to utilize the main
+ * @author Jayanta Roy
+ * @version 1.0
+ * @since 04/06/2018
+ */
 public class MainStock {
 
 	@SuppressWarnings("unchecked")
-	public static void main(String[] args) throws ParseException {
-
-        SingleLinkedList out=new SingleLinkedList();
-        out=StockAccount.stockobjectcreation();
-        JSONArray tempArray=new JSONArray(); 
-       //out.displayln();
-       while(!out.isEmpty())
+	public static void main(String[] args) throws ParseException, IOException {
+    
+        User u=new User();
+        System.out.println();
+        System.out.println("Showing companies code");
+        System.out.println("code  company name");
+        System.out.println("-------------------");
+        StockAccount.showStock();
+        boolean processexit=false;
+        while(processexit==false)
+        {
+        u.actions();
+       System.out.println("Press 1 for continue  or any other key to stop");
+       int choice=Utility.readInteger();
+       switch(choice)
        {
-
-         tempArray.add((JSONObject) new JSONParser().parse((String) out.pop(0)));
-        
+       case 1:processexit=false;
+       break;
+       default: processexit=true;
+       break;
+       }
         }
-        System.out.println(tempArray);
-        
-        Queue symbol=new Queue();
-        Queue dateandtime= new Queue();
 	}
 }
 
