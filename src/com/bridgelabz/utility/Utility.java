@@ -16,6 +16,24 @@ public class Utility {
 
 		return number;
 	}
+	
+	/*
+	 * number variable stores the number entered by the user as the input
+	 */
+	public static Long readLong() {
+		Long number = sc.nextLong();
+
+		return number;
+	}
+	
+	/*
+	 * number variable stores the number entered by the user as the input
+	 */
+	public static Double readDouble() {
+		Double number = sc.nextDouble();
+
+		return number;
+	}
 	// ____________________________________________________________________________________________________________
 
 	/*

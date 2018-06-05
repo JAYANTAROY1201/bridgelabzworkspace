@@ -26,6 +26,7 @@ public class StockAccount {
 	static String name;
 	static double currbalance;
 	static File f;
+	static SingleLinkedList []stockStore=new SingleLinkedList[stockobjectcreation().size()];
 
 	/**
 	 * default contructor
@@ -47,6 +48,8 @@ public class StockAccount {
 		try {
 			if (f.createNewFile()) {
 				System.out.println("new account created for " + filename);
+				initialize();
+				
 			} else {
 				System.out.println("Account founds....");
 			}
@@ -55,15 +58,30 @@ public class StockAccount {
 		}
 	}
 
+	/**
+	 * this method is written to return the updated balance of user
+	 * @return
+	 */
+	public int setNewbalance() {
+		System.out.println("Enter your initial amount");
+		return Utility.readInteger();
+	}
 	
 	/**
 	 * this method is written to return the updated balance of user
 	 * @return
 	 */
-	public double valueOf() {
-		return currbalance;
+	public int valueOf() {
+		return (int) currbalance;
 	}
-
+  public static void initialize()
+  {
+	  for(int i=0;i<stockobjectcreation().size();i++)
+	  {
+		  stockStore[i]=new SingleLinkedList();
+		  stockStore[i].add(0);
+	  }
+  }
 	
 	/**
 	 * 
@@ -74,10 +92,13 @@ public class StockAccount {
 	 * @throws NumberFormatException
 	 * @throws ParseException
 	 */
-	@SuppressWarnings({ "deprecation", "unchecked" })
+	@SuppressWarnings("unchecked")
 	public void buy(int amount, String symbol) throws IOException, NumberFormatException, ParseException {
+	    currbalance=amount;
 		SingleLinkedList temp = stockobjectcreation();
+		
 		JSONObject compobj = (JSONObject) new JSONParser().parse((temp.get(Integer.parseInt(symbol)).toString()));
+		
 		System.out.println("Displaying details:");
 		String boughtFrom = compobj.get("Name").toString();
 		System.out.println("Company name: " + boughtFrom);
@@ -87,15 +108,16 @@ public class StockAccount {
 		int noOfShare = Integer.parseInt(compobj.get("No of share").toString());
 		System.out.println("Enter how many shares you want to buy:");
 		int wantToBuy = Utility.readInteger();
-		if (noOfShare < wantToBuy || (wantToBuy * (Integer.parseInt(compobj.get("Share price").toString())) > amount)) {
+		if (noOfShare < wantToBuy || (wantToBuy * (Integer.parseInt(compobj.get("Share price").toString())) > currbalance)) {
 			System.out.println("not available");
 			return;
 		} else {
 			noOfShare = noOfShare - wantToBuy;
-			amount = amount - (Integer.parseInt(compobj.get("Share price").toString()) * wantToBuy);
+			currbalance = currbalance - (Integer.parseInt(compobj.get("Share price").toString()) * wantToBuy);
+			
 		}
 		String fileitem = "Share bought from: " + boughtFrom + "\n" + "No of share bought: " + wantToBuy + "\n"
-				+ "Clear balance: " + amount + "\n" + "Buying date and time: " + LocalDateTime.now() + "\n" + "\n";
+				+ "Clear balance: " + currbalance + "\n" + "Buying date and time: " + LocalDateTime.now() + "\n" + "\n";
 		save(f, fileitem);
 		JSONObject stobject = new JSONObject();
 		stobject.put("Name", boughtFrom);
@@ -105,18 +127,61 @@ public class StockAccount {
 		temp.removeAt(Integer.parseInt(symbol));
 		temp.insert(stockobjectupdate, Integer.parseInt(symbol));
 		updateJson(temp);
+		
+		int value=(int) stockStore[Integer.parseInt(symbol)].removeAt(0);
+		stockStore[Integer.parseInt(symbol)].add((wantToBuy +value));
+		}
 
-	}
 
 	
 	/**
 	 * this method is written to sell a stock
 	 * @param amount
 	 * @param symbol
+	 * @throws IOException 
+	 * @throws ParseException 
 	 */
-	public void sell(int amount, String symbol) {
+	@SuppressWarnings("unchecked")
+	public void sell(int amount, String symbol) throws IOException, ParseException {
+		currbalance=amount;
+		SingleLinkedList temp = stockobjectcreation();
+		
+		JSONObject compobj = (JSONObject) new JSONParser().parse((temp.get(Integer.parseInt(symbol)).toString()));
+		
+		System.out.println("Displaying details:");
+		String sellTo = compobj.get("Name").toString();
+		System.out.println("Company name: " + sellTo);
+		System.out.println("Share price:" + compobj.get("Share price"));
+		System.out.println("No of shares available to you: "+ stockStore[Integer.parseInt(symbol)].get(0));
+		
 
-	}
+		int numOfShare = Integer.parseInt(compobj.get("No of share").toString());
+		System.out.println("Enter how many shares you want to sell:");
+		int wantToSell = Utility.readInteger();
+		if ((Integer)stockStore[Integer.parseInt(symbol)].get(0) < wantToSell) {
+			System.out.println("not available");
+			return;
+		} else {
+			numOfShare = numOfShare + wantToSell;
+			currbalance = currbalance + (Integer.parseInt(compobj.get("Share price").toString()) * wantToSell);
+			
+		}
+		String fileitem = "Share sell from: " + sellTo + "\n" + "No of share sell: " + wantToSell + "\n"
+				+ "Clear balance: " + currbalance + "\n" + "Buying date and time: " + LocalDateTime.now() + "\n" + "\n";
+		save(f, fileitem);
+		JSONObject stobject = new JSONObject();
+		stobject.put("Name", sellTo);
+		stobject.put("No of share", numOfShare);
+		stobject.put("Share price", compobj.get("Share price"));
+		String stockobjectupdate = stobject.toString();
+		temp.removeAt(Integer.parseInt(symbol));
+		temp.insert(stockobjectupdate, Integer.parseInt(symbol));
+		updateJson(temp);
+		int value=(int) stockStore[Integer.parseInt(symbol)].removeAt(0);
+		stockStore[Integer.parseInt(symbol)].add((wantToSell +value));
+		}
+		
+	
 
 	
 	/**
@@ -156,12 +221,12 @@ public class StockAccount {
 			for (int i = 0; i < compArray.size(); i++) {
 				JSONObject compobj = (JSONObject) compArray.get(i);
 				String name = compobj.get("Name").toString();
-				company.add(i + "    " + name);
+				company.add(i + "        " + name+"             "+compobj.get("Share price").toString()+"           "+compobj.get("No of share").toString());
+				
 
 			}
 			company.displayln();
-		} catch (IOException | ParseException e) {
-			// TODO Auto-generated catch block
+		} catch (IOException | ParseException e) {		
 			e.printStackTrace();
 		}
 	}

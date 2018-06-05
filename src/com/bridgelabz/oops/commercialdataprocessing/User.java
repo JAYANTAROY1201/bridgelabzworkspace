@@ -17,23 +17,26 @@ public class User {
 	static StockAccount userstockaccount;
 
 	// static SingleLinkedList l;
+	@SuppressWarnings("static-access")
 	public User(String name, int currbalance) {
 		this.name = name;
 		this.currbalance = currbalance;
 		userstockaccount = new StockAccount(name);
 	}
 
+	@SuppressWarnings("static-access")
 	public User()
 
 	{
-		setUserName();
-		setUserBalance();
+		setUserName();		
 		userstockaccount = new StockAccount(name);
+		setUserBalance();
 	}
 
 	/**
 	 * this method is written to set user name
 	 */
+	@SuppressWarnings("static-access")
 	public void setUserName() {
 		System.out.println("Enter name");
 		String name = Utility.readString();
@@ -51,9 +54,9 @@ public class User {
 	/**
 	 * this method is written to set user balance
 	 */
+	@SuppressWarnings("static-access")
 	public void setUserBalance() {
-		System.out.println("Enter initial balance:");
-		int currbalance = Utility.readInteger();
+		int currbalance = userstockaccount.setNewbalance();
 		this.currbalance = currbalance;
 	}
 
@@ -71,14 +74,19 @@ public class User {
 	 * @throws NumberFormatException
 	 * @throws ParseException
 	 */
-	public static void actions() throws IOException, NumberFormatException, ParseException {
+	public void actions() throws IOException, NumberFormatException, ParseException {
 		System.out.println(" press 1 for buy\n press 2 for sell");
 		int choice = Utility.readInteger();
 		switch (choice) {
 		case 1:
-			System.out.println("Enter company's name from where you wants to buy share:");
+			System.out.println("Enter company's symbol from where you wants to buy share:");
 			String symbol = Utility.readString();
 			userstockaccount.buy(currbalance, symbol);
+			break;
+		case 2:
+			System.out.println("Enter company's symbol to where you wants to sell share:");
+			String sym=Utility.readString();
+			userstockaccount.sell(userstockaccount.valueOf(), sym);
 		}
 
 	}
