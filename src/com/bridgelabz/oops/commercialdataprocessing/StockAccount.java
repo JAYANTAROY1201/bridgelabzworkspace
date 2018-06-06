@@ -270,7 +270,7 @@ public class StockAccount {
 				f.createNewFile();
 			}
 
-			FileWriter fw = new FileWriter(f.getAbsoluteFile());
+			FileWriter fw = new FileWriter(f.getAbsoluteFile(),true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(content);
 			bw.close();
