@@ -1,5 +1,6 @@
 package com.bridgelabz.oops.addressbook;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
@@ -13,7 +14,7 @@ import com.bridgelabz.utility.Utility;
  */
 public class ApplicationMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
 
 		AddressbookController ac = new AddressbookController();
 
@@ -21,7 +22,7 @@ public class ApplicationMain {
 		boolean close = false;
 		while (close == false) {
 			System.out.println("--------------FILE MENU--------------");
-			System.out.println("1.NEW \n2.ADD \n3.EDIT \n4.DELETE \n5.SAVE \n6.SORT BY NAME \n7.SORT BY ZIP \n8.EXIT");
+			System.out.println("1.NEW \n2.ADD \n3.EDIT \n4.DELETE \n5.SAVE \n6.SORT BY NAME \n7.SORT BY ZIP \n8.EXIT \n9.OPEN");
 			System.out.println("Enter choice");
 			int choice = Utility.readInteger();
 			switch (choice) {
@@ -57,7 +58,11 @@ public class ApplicationMain {
 				ac.doSortByZip();
 				break;
 			case 8:
+				ac.doExit();
 				close = true;
+				break;
+			case 9:
+				ac.doOpen();
 				break;
 			default:
 				System.out.println("Invalid choice");
