@@ -32,6 +32,7 @@ public class UtilityBinarySearchTree {
 			for (long i = 0; i < count; i++) {
 				intsum = intsum + countBST(i) * countBST(count - i - 1);
 			}
+			
 			return intsum;
 		}
 	}

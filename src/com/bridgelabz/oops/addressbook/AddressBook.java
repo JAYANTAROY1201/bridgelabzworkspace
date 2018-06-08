@@ -16,6 +16,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.bridgelabz.utility.Utility;
+
 /**
  * @author Jayanta Roy
  * @version 1.0
@@ -24,14 +25,37 @@ import com.bridgelabz.utility.Utility;
 public class AddressBook implements Serializable {
 	Vector<Person> addressBook;
 	static File fileLocation;
-	static JSONArray contactArray=new JSONArray();
+	static JSONArray contactArray = new JSONArray();
+
 	public AddressBook() {
 		setFile();
-//		loadObject();
 		
+	}
+	
+	/**
+	 * this method is written to read json file and adding into an vector
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	public void readfromJson() throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		Object obj = parser.parse(new FileReader(fileLocation));
+		JSONArray oldarray = (JSONArray) obj;
+		if(oldarray.isEmpty())
+		{
+			contactArray=new JSONArray();
+		}
+		else {
+		for (int i = 0; i < oldarray.size(); i++) {
+			JSONObject objson = (JSONObject) oldarray.get(i);
+			contactArray.add(objson);
+		}
+		}
 	}
 
 	/**
+	 * to add a person into address book
 	 * @param firstName
 	 * @param lastName
 	 * @param address
@@ -39,9 +63,12 @@ public class AddressBook implements Serializable {
 	 * @param state
 	 * @param zip
 	 * @param mobile
+	 * @throws ParseException
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
-	public void addPerson() {
-
+	public void addfirstPerson() throws FileNotFoundException, IOException, ParseException {
+		readfromJson();
 		System.out.println("Enter first name:");
 		String firstName = Utility.readString();
 		System.out.println("Enter last name:");
@@ -56,43 +83,43 @@ public class AddressBook implements Serializable {
 		String zip = Utility.readString();
 		System.out.println("Enter mobile:");
 		String mobile = Utility.readString();
-
+		loadObject();
 		addressBook.add(new Person(firstName, lastName, address, city, state, zip, mobile));
-		System.out.println("Contact added successfully");		
+		System.out.println("Contact added successfully!!! Please save to avoid deleting the details");
 	}
+	
+	
 
 	/**
-	 * @return
+	 *to add person afterwards
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
 	 */
-	public int getNumberOfPersons() {
-		return addressBook.size();
+	public void addPerson() throws FileNotFoundException, IOException, ParseException {
+		loadObject();
+		readfromJson();
+		System.out.println("Enter first name:");
+		String fistName = Utility.readString();
+		System.out.println("Enter last name:");
+		String lstName = Utility.readString();
+		System.out.println("Enter address:");
+		String adress = Utility.readString();
+		System.out.println("Enter city:");
+		String cty = Utility.readString();
+		System.out.println("Enter state:");
+		String stat = Utility.readString();
+		System.out.println("Enter zip:");
+		String zp = Utility.readString();
+		System.out.println("Enter mobile:");
+		String mob = Utility.readString();
+		addressBook.add(new Person(fistName, lstName, adress, cty, stat, zp, mob));
+		System.out.println("Contact added successfully!!! Please save to avoid deleting the details");
 	}
 
 	/**
-	 * @param index
-	 * @return
-	 */
-	public String getFullNameOfPerson(int index) {
-		return (addressBook.get(index).getFirstName() + addressBook.get(index).getLastName());
-	}
-
-	/**
-	 * @param index
-	 * @return
-	 */
-	public String[] getOtherPersonInformation(int index) {
-		String[] otherInformation = new String[5];
-		otherInformation[0] = addressBook.get(index).getAddress();
-		otherInformation[1] = addressBook.get(index).getCity();
-		otherInformation[2] = addressBook.get(index).getState();
-		otherInformation[3] = addressBook.get(index).getZip();
-		otherInformation[4] = addressBook.get(index).getMobile();
-
-		return otherInformation;
-	}
-
-	/**
-	 * @param index
+	 * 
+	 * this method is written to update details of a person
 	 * @param address
 	 * @param city
 	 * @param state
@@ -104,30 +131,26 @@ public class AddressBook implements Serializable {
 	 */
 	public void updatePerson() throws FileNotFoundException, IOException, ParseException {
 		showNames();
-		JSONParser parser=new JSONParser();
-		Person temp=null;
-		Object obj= parser.parse(new FileReader(getFile()));
-		
-		JSONArray oldarray= (JSONArray) obj;
-		Vector<Person>abook=new Vector<Person>();
+		JSONParser parser = new JSONParser();
+		Person temp = null;
+		Object obj = parser.parse(new FileReader(getFile()));
+
+		JSONArray oldarray = (JSONArray) obj;
+		Vector<Person> abook = new Vector<Person>();
 		System.out.println("choose your contact based on your index:");
 		int index = Utility.readInteger();
-		for(int i=0;i<oldarray.size();i++)
-		{
-			JSONObject objson=(JSONObject) oldarray.get(i);
-			if(i==index)
-			{
-			
-			temp=new Person( objson.get("First Name").toString(), objson.get("Last Name").toString(),
-					objson.get("Address").toString(), objson.get("City").toString(), objson.get("State").toString(),
-					objson.get("ZIP").toString(),objson.get("Mobile").toString());
-		}
-			else
-			{
+		for (int i = 0; i < oldarray.size(); i++) {
+			JSONObject objson = (JSONObject) oldarray.get(i);
+			if (i == index) {
+
+				temp = new Person(objson.get("First Name").toString(), objson.get("Last Name").toString(),
+						objson.get("Address").toString(), objson.get("City").toString(), objson.get("State").toString(),
+						objson.get("ZIP").toString(), objson.get("Mobile").toString());
+			} else {
 				contactArray.add(objson);
-			}
+			}			
 		}
-	
+
 		System.out.println("choose what you want to update");
 		System.out.println("1 for Address \n2. for City \n3 for State \n4 for ZIP \n5 for Mobile \n");
 		int choice = Utility.readInteger();
@@ -152,39 +175,45 @@ public class AddressBook implements Serializable {
 			break;
 		}
 		removeOld(index);
-        JSONObject tempobj=new JSONObject();
-        tempobj.put("First Name", temp.getFirstName());
-        tempobj.put("Last Name", temp.getLastName());
-        tempobj.put("Address", temp.getAddress());
-        tempobj.put("City", temp.getCity());
-        tempobj.put("State", temp.getState());
-        tempobj.put("ZIP", temp.getZip());
-        tempobj.put("Mobile", temp.getMobile());
-        contactArray.add(tempobj);
-		
-        
-
+		JSONObject tempobj = new JSONObject();
+		tempobj.put("First Name", temp.getFirstName());
+		tempobj.put("Last Name", temp.getLastName());
+		tempobj.put("Address", temp.getAddress());
+		tempobj.put("City", temp.getCity());
+		tempobj.put("State", temp.getState());
+		tempobj.put("ZIP", temp.getZip());
+		tempobj.put("Mobile", temp.getMobile());
+		contactArray.add(tempobj);
+		System.out.println("file saved and write successfully");
 		writeToJson(contactArray, getFile());
 
 	}
-	
-	public void removeOld(int index) throws FileNotFoundException, IOException, ParseException {	
-		JSONParser parser= new JSONParser();
-		Object javaObjct=parser.parse(new FileReader(getFile()));
-		JSONArray oldjsonArray=(JSONArray) javaObjct;	
-		JSONArray newArray=new JSONArray();
-		for (int i = 0; i <oldjsonArray.size(); i++) {
-			JSONObject newObj= (JSONObject)oldjsonArray.get(i);
-			if(i!=index)
-			{
+
+
+	/**
+	 * this method is written to remove a person for json file to add a new one
+	 * @param index
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	public void removeOld(int index) throws FileNotFoundException, IOException, ParseException {
+		JSONParser parser = new JSONParser();
+		Object javaObjct = parser.parse(new FileReader(getFile()));
+		JSONArray oldjsonArray = (JSONArray) javaObjct;
+		JSONArray newArray = new JSONArray();
+		for (int i = 0; i < oldjsonArray.size(); i++) {
+			JSONObject newObj = (JSONObject) oldjsonArray.get(i);
+			if (i != index) {
 				newArray.add(newObj);
-		    }
-		}	
-		contactArray=newArray;
+			}
+		}
+		contactArray = newArray;
 		writeToJson(contactArray, getFile());
 	}
 
 	/**
+	 * this method is written to remove a person for json file
 	 * @param index
 	 * @throws ParseException
 	 * @throws IOException
@@ -194,104 +223,75 @@ public class AddressBook implements Serializable {
 		showNames();
 		System.out.println("choose your contact based on your index:");
 		int index = Utility.readInteger();
-		JSONParser parser= new JSONParser();
-		Object javaObjct=parser.parse(new FileReader(getFile()));
-		JSONArray oldjsonArray=(JSONArray) javaObjct;	
-		JSONArray newArray=new JSONArray();
-		for (int i = 0; i <oldjsonArray.size(); i++) {
-			JSONObject newObj= (JSONObject)oldjsonArray.get(i);
-			if(i!=index)
-			{
+		JSONParser parser = new JSONParser();
+		Object javaObjct = parser.parse(new FileReader(getFile()));
+		JSONArray oldjsonArray = (JSONArray) javaObjct;
+		JSONArray newArray = new JSONArray();
+		for (int i = 0; i < oldjsonArray.size(); i++) {
+			JSONObject newObj = (JSONObject) oldjsonArray.get(i);
+			if (i != index) {
 				newArray.add(newObj);
-		    }
-		}	
-		contactArray=newArray;		
+			}
+		}
+		contactArray = newArray;
+		writeToJson(newArray, getFile());
 	}
 
+	
 	/**
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	 * 
+	 * this method is written to sort the persons along with first name
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
 	 */
+	@SuppressWarnings("unchecked")
 	public void sortByName() throws FileNotFoundException, IOException, ParseException {
 		Object obj = new JSONParser().parse(new FileReader(getFile()));
-        JSONArray addressArray = (JSONArray) obj;
-        for(int i=0;i<addressArray.size()-1;i++) {
-            for(int j =0;j<addressArray.size()-i-1;j++)
-            {
-                JSONObject person = (JSONObject)addressArray.get(j);
-                JSONObject person2=(JSONObject)addressArray.get(j+1);
-                if(person.get("First Name").toString().compareToIgnoreCase(person2.get("First Name").toString())>0)
-                {
-                    JSONObject temp = person;
-                    addressArray.set(j, person2);
-                    addressArray.set(j+1, temp);
-                }
-            }
-	 }
-       writeToJson(addressArray, getFile()); 
+		JSONArray addressArray = (JSONArray) obj;
+		for (int i = 0; i < addressArray.size() - 1; i++) {
+			for (int j = 0; j < addressArray.size() - i - 1; j++) {
+				JSONObject person = (JSONObject) addressArray.get(j);
+				JSONObject person2 = (JSONObject) addressArray.get(j + 1);
+				if (person.get("First Name").toString().compareToIgnoreCase(person2.get("First Name").toString()) > 0) {
+					JSONObject temp = person;
+					addressArray.set(j, person2);
+					addressArray.set(j + 1, temp);
+				}
+			}
+		}
+		contactArray=addressArray;
+		writeToJson(addressArray, getFile());
 	}
 
 	/**
-	 * @throws ParseException 
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	 * 
+	 * this method is written to sort the persons along with zip code
+	 * @throws ParseException
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
 	public void sortByZip() throws FileNotFoundException, IOException, ParseException {
 		Object obj = new JSONParser().parse(new FileReader(getFile()));
-        JSONArray addressArray = (JSONArray) obj;
-        for(int i=0;i<addressArray.size()-1;i++) {
-            for(int j =0;j<addressArray.size()-i-1;j++)
-            {
-                JSONObject person = (JSONObject)addressArray.get(j);
-                JSONObject person2=(JSONObject)addressArray.get(j+1);
-                if(person.get("ZIP").toString().compareToIgnoreCase(person2.get("ZIP").toString())>0)
-                {
-                    JSONObject temp = person;
-                    addressArray.set(j, person2);
-                    addressArray.set(j+1, temp);
-                }
-            }
-	 }
-       writeToJson(addressArray, getFile()); 
-	}
-
-	public void printAll() {
-		for (int i = 0; i < addressBook.size(); i++) {
-			System.out.println("First Name: " + addressBook.get(i).getFirstName());
-			System.out.println("Last Name: " + addressBook.get(i).getLastName());
-			System.out.println("Address: " + addressBook.get(i).getAddress());
-			System.out.println("City: " + addressBook.get(i).getCity());
-			System.out.println("State: " + addressBook.get(i).getState());
-			System.out.println("ZIP : " + addressBook.get(i).getZip());
-			System.out.println("Phone: " + addressBook.get(i).getMobile());
+		JSONArray addressArray = (JSONArray) obj;
+		for (int i = 0; i < addressArray.size() - 1; i++) {
+			for (int j = 0; j < addressArray.size() - i - 1; j++) {
+				JSONObject person = (JSONObject) addressArray.get(j);
+				JSONObject person2 = (JSONObject) addressArray.get(j + 1);
+				if (person.get("ZIP").toString().compareToIgnoreCase(person2.get("ZIP").toString()) > 0) {
+					JSONObject temp = person;
+					addressArray.set(j, person2);
+					addressArray.set(j + 1, temp);
+				}
+			}
 		}
-
+		contactArray=addressArray;
+		writeToJson(addressArray, getFile());
 	}
-	
 
-   public void vectorToJson(Vector<Person> addressBook)
-   {
-	   for(int i=0;i<addressBook.size();i++)
-	   {
-		   Person p=new Person();
-		   p=addressBook.get(i);
-		  JSONObject perobj=new JSONObject();
-		  perobj.put("First Name", p.firstName);
-		  perobj.put("Last Name", p.lastName);
-		  perobj.put("Address", p.address);
-		  perobj.put("City", p.city);
-		  perobj.put("State", p.state);
-		  perobj.put("ZIP", p.zip);
-		  perobj.put("Mobile", p.mobile);
-		  toJsonArray(perobj);
-		  
-	   }
-	   writeToJson(contactArray, getFile());
-   }
-
+	/**
+	 * this method is written to put a person details into an json object
+	 * @return jsonobject after putting the person's details
+	 */
+	@SuppressWarnings("unchecked")
 	public JSONObject toJsonObject() {
 		JSONObject contactObject = new JSONObject();
 		contactObject.put("First Name", Person.firstName);
@@ -301,24 +301,30 @@ public class AddressBook implements Serializable {
 		contactObject.put("State", Person.state);
 		contactObject.put("ZIP", Person.zip);
 		contactObject.put("Mobile", Person.mobile);
-		//toJsonArray(contactObject);
-		//writeToJson(contactArray, fileLocation);
 		return contactObject;
 
 	}
 
-	public void toJsonArray(JSONObject contactObject) {	
+	/**
+	 *this method is written to put an json object into a json array
+	 * @param contactObject whwre the json object will be loaded
+	 */
+	@SuppressWarnings("unchecked")
+	public void toJsonArray(JSONObject contactObject) {
 		contactArray.add(contactObject);
-		
 	}
 
+	/**
+	 * this method is written to write a json array to a  json file
+	 * @param contactArray i.e. a json array while shold be written
+	 * @param fileLocation is the path where it will be written
+	 */
 	public void writeToJson(JSONArray contactArray, File fileLocation) {
 		try {
-			// if file doesnt exists, then create it
+
 			if (!fileLocation.exists()) {
 				fileLocation.createNewFile();
 			}
-
 			FileWriter fw = new FileWriter(fileLocation);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(contactArray.toString());
@@ -331,27 +337,40 @@ public class AddressBook implements Serializable {
 		}
 	}
 
+	/**
+	 * this method is written to set a file name. File path will be asked after calling the method 
+	 */
 	public void setFile() {
 		System.out.println("enter file name:");
 		String file = Utility.readString();
 		fileLocation = new File("/home/administrator/eclipse-workspace/"
-				+ "BridgelabzModules/src/com/bridgelabz/oops/addressbook/"+file+".json");
-	}
-	
-    
-	public void setFile(String file) {
-		fileLocation = new File("/home/administrator/eclipse-workspace/"
-				+ "BridgelabzModules/src/com/bridgelabz/oops/addressbook/"+file+".json");
+				+ "BridgelabzModules/src/com/bridgelabz/oops/addressbook/" + file + ".json");
 	}
 
+	/**
+	 * this method is written to set a file name while passing a file while calling the method
+	 * @param file address in string format
+	 */
+	public void setFile(String file) {
+		fileLocation = new File("/home/administrator/eclipse-workspace/"
+				+ "BridgelabzModules/src/com/bridgelabz/oops/addressbook/" + file + ".json");
+	}
+
+	/**
+	 * this method is written to get the file location
+	 * @return curently using file location
+	 */
 	public File getFile() {
 		return fileLocation;
 	}
-    public void loadObject()
-    {
-    	Vector<Person> tempvector=new Vector<Person>();
-    	JSONParser parser = new JSONParser();
-		Object obj=null;
+
+	/**
+	 * this method is written to load all jsonobject into vector whenever we open or create an addressbook i.e json file
+	 */
+	public void loadObject() {
+		Vector<Person> tempvector = new Vector<Person>();
+		JSONParser parser = new JSONParser();
+		Object obj = null;
 		try {
 			obj = parser.parse(new FileReader(getFile()));
 		} catch (IOException | ParseException e) {
@@ -360,15 +379,21 @@ public class AddressBook implements Serializable {
 		JSONArray name = (JSONArray) obj;
 		for (int i = 0; i < name.size(); i++) {
 			JSONObject nameobj = (JSONObject) name.get(i);
-			
+
 			tempvector.add(new Person(nameobj.get("First Name").toString(), nameobj.get("Last Name").toString(),
-				nameobj.get("Address").toString(),nameobj.get("City").toString(),nameobj.get("State").toString(),
-				nameobj.get("ZIP").toString(),nameobj.get("Mobile").toString()));
-        
+					nameobj.get("Address").toString(), nameobj.get("City").toString(), nameobj.get("State").toString(),
+					nameobj.get("ZIP").toString(), nameobj.get("Mobile").toString()));
+
 		}
-		addressBook=tempvector;
-		}
-    
+		addressBook = tempvector;
+	}
+
+	/**
+	 * this method is written to print all the names of an existing addressbook along with index
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public void showNames() throws FileNotFoundException, IOException, ParseException {
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(new FileReader(getFile()));

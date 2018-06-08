@@ -9,7 +9,7 @@ import com.bridgelabz.utility.Utility;
  * @since 30/05/2018
  */
 public class BinarySearchTree {
-
+	
 	public static void main(String[] args) {
 		System.out.println("Enter no of test cases:");
 		int test = Utility.readInteger();
@@ -19,8 +19,13 @@ public class BinarySearchTree {
 			nodes[i] = Utility.readInteger();
 		}
 		for (int j = 0; j < test; j++) {
-			System.out.println("Possibe no. of binary search tree with " + nodes[j] + " node(s):"
-					+ UtilityBinarySearchTree.countBST(nodes[j]));
+			try {
+				System.out.println("Possibe no. of binary search tree with " + nodes[j] + " node(s):"
+						+ UtilityBinarySearchTree.countBST(nodes[j]));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

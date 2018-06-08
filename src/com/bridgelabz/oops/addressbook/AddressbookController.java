@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import com.bridgelabz.utility.Utility;
@@ -17,8 +18,11 @@ public class AddressbookController {
 	static AddressBook a1;
 	Vector<String> addressbook = new Vector<String>();
 
-	public void doAdd() {
-		a1.addPerson();
+	public void doAdd() throws FileNotFoundException, IOException, ParseException {
+		a1.addfirstPerson();
+	}
+	public void doAddagain() throws FileNotFoundException, IOException, ParseException {
+		a1.addPerson();;
 	}
 
 	public void doDelete() throws FileNotFoundException, IOException, ParseException {
@@ -32,7 +36,8 @@ public class AddressbookController {
 	public void doNew() {
 		System.out.println("Set a name for new address book");
 		addressbook.add(Utility.readString());
-		a1 = new AddressBook();
+		a1 = new AddressBook();		
+		a1.writeToJson(new JSONArray() , a1.fileLocation);
 	}
     public void doOpen() {
     	System.out.println("Choose your address book:");
@@ -41,19 +46,20 @@ public class AddressbookController {
 		}
     	
     	a1=new AddressBook();
-  
+    	a1.loadObject();
     }
 	public void doSave() {
 		a1.toJsonArray(a1.toJsonObject());
+		a1.writeToJson(a1.contactArray, a1.getFile());
 	}
 
 	public void doExit()
 	{
-		a1.writeToJson(a1.contactArray, a1.getFile());		
+//		a1.writeToJson(a1.contactArray, a1.getFile());		
 	}
 	public void doSortByName() throws FileNotFoundException, IOException, ParseException {
 		a1.sortByName();
-		//doSave();
+		
 	}
 
 	public void doSortByZip() throws FileNotFoundException, IOException, ParseException {

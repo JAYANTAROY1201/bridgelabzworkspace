@@ -34,6 +34,7 @@ public class PrimeAnagramQueue {
 			 }
 		 }
 	 }
+	 
 	 primeanagrams.display();
 	}
 	}
