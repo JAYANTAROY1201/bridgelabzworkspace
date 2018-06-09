@@ -104,8 +104,8 @@ public class SingleLinkedList {
 		return count;
 	}
 //to get an item based on index
-	public Comparable get(int pos) {
-
+	public Comparable get(int pos) 
+	{
 		if (pos == 0) {
 			
 			return first.data;

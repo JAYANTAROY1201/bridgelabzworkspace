@@ -24,7 +24,7 @@ public class NumberChaining {
     static int totalSlot = 11;
     static int slotNumber;
     static List<Integer> myList=new LinkedList<Integer>();
-    static LinkedList<Integer> list=new List[totalSlot];
+    static List []list=new LinkedList[totalSlot];
     static Map<Integer, List> numberMap = new HashMap<Integer,List>();
     public static void main(String[] args){
     	File readFile=new File("/home/administrator/"
@@ -34,21 +34,22 @@ public class NumberChaining {
         System.out.println("Enter the number to search in the map");
         int numberSearch = Utility.readInteger();
         if(myList.contains(numberSearch))
-        {
+        {    System.out.println(numberSearch+" found and removed");
         	myList.remove((Integer)numberSearch);
         }
         else {
+        	System.out.println(numberSearch+" not found and added");
         	myList.add(numberSearch);
         }
        
         for (int i = 0; i < myList.size(); i++) 
         {
-            if(list==null)
+            if(list[myList.get(i) % 11]==null)
             {
-            	list=new LinkedList<Integer>();
-            	numberMap.put(myList.get(i) % 11, list);
+            	list[myList.get(i) % 11]=new LinkedList<Integer>();
+            	numberMap.put(myList.get(i) % 11, list[myList.get(i) % 11]);
             }
-            list.add(myList.get(i));
+            list[myList.get(i) % 11].add(myList.get(i));
           
         }
                   
