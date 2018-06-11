@@ -1,4 +1,4 @@
-package com.bridgelabz.clinicmanagement.serviceimpl;
+package com.bridgelabz.clinicmanagement.serviceimplementation;
 
 import java.io.FileNotFoundException;
 
@@ -33,7 +33,9 @@ public class ManagerServiceImplementation {
 	      docObject.put("Availibility day", doc.getDocAvailibilityDay());
 	      docObject.put("Availibility time", doc.getDocAvailibilityTime());
 	      UtilityClinic.docJson.add(docObject);
-	      util.writetoJson(UtilityClinic.docJson, util.getDocFileName());      
+	      util.writetoJson(UtilityClinic.docJson, util.getDocFileName()); 
+	      util.readFromDocJson(util.getDocFileName());
+	      
 	    }
 	    
 	 
@@ -56,6 +58,7 @@ public class ManagerServiceImplementation {
 	      patObject.put("Mobile", pat.getPatMob());
 	      patObject.put("Age", pat.getpatAge());
 	      UtilityClinic.patJson.add(patObject);
-	      util.writetoJson(UtilityClinic.patJson, util.getPatFileName());      
+	      util.writetoJson(UtilityClinic.patJson, util.getPatFileName());
+	      util.readFromPatJson(util.getPatFileName());
 	    }
 }

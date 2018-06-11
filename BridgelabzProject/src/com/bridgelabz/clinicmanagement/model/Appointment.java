@@ -1,47 +1,59 @@
 package com.bridgelabz.clinicmanagement.model;
 
+/**
+ * @author administrator
+ *
+ */
 public class Appointment {
-	
+
 	static String doctorName;
 	static String doctorId;
 	static String patientName;
 	static String patientId;
 	static String timeStamp;
-	public Appointment()
-	{
-		setDoctorName();
-		setDoctorId();		
-		setPatientName();
-		setPatientId();
-		setTime();
-	}
-	
 
-	public void setDoctorName()
-	{
-		
+	@SuppressWarnings("static-access")
+	public Appointment(String doctorName, String doctorId, String patientName, String patientId, String timeStamp) {
+		this.doctorName = doctorName;
+		this.doctorId = doctorId;
+		this.patientName = patientName;
+		this.patientId = patientId;
+		this.timeStamp = timeStamp;
 	}
-	
-	public void setDoctorId() {
-		// TODO Auto-generated method stub
-		
+
+	/**
+	 * @return
+	 */
+	public String getDoctorName() {
+		return doctorName;
 	}
-	
-	public void setPatientName() {
-		// TODO Auto-generated method stub
-		
+
+	/**
+	 * @return
+	 */
+	public String getDoctorId() {
+		return doctorId;
 	}
-	public void setPatientId() {
-		// TODO Auto-generated method stub
-		
+
+	/**
+	 * @return
+	 */
+	public String getPatientName() {
+		return patientName;
 	}
-	
-	public void setTime() {
-		// TODO Auto-generated method stub
-		
+
+	/**
+	 * @return
+	 */
+	public String getPatientId() {
+		return patientId;
 	}
-	
-	
+
+	/**
+	 * @return
+	 */
+	public String getTime() {
+		return timeStamp;
 	}
 
 }
