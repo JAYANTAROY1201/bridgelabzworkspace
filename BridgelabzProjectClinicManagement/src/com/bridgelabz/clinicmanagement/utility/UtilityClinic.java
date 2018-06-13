@@ -70,7 +70,7 @@ public class UtilityClinic {
 	 * String variable stores the String entered by the user as the input
 	 */
 	public static String readStringLine() {
-		String str = sc.nextLine();
+		String str = sc.next();
 		return str;
 	}
 
@@ -88,7 +88,7 @@ public class UtilityClinic {
 	public void createJsonFile() {
 		System.out.println("Enter file name:");
 		String fileName = readString();
-		file = new File("/home/administrator/eclipse-workspace/BridgelabzProject/src/files/" + fileName + ".json");
+		file = new File("/home/administrator/eclipse-workspace/BridgelabzProjectClinicManagement/src/files/" + fileName + ".json");
 		try {
 			if (file.createNewFile()) {
 				System.out.println("new JSON file created with file name " + fileName);
@@ -170,7 +170,7 @@ public class UtilityClinic {
 	public void accessExistingDocJson() throws FileNotFoundException {
 		System.out.println("Enter doctor's file name:");
 		String temp = readString();
-		File mfile = new File("/home/administrator/eclipse-workspace/BridgelabzProject/src/files/" + temp + ".json");
+		File mfile = new File("/home/administrator/eclipse-workspace/BridgelabzProjectClinicManagement/src/files/" + temp + ".json");
 		try {
 			if (mfile.createNewFile()) {
 				createDocJson();
@@ -237,7 +237,7 @@ public class UtilityClinic {
 	public void accessExistingPatJson() throws FileNotFoundException {
 		System.out.println("Enter patient's file name:");
 		String temp = readString();
-		File mfile = new File("/home/administrator/eclipse-workspace/BridgelabzProject/src/files/" + temp + ".json");
+		File mfile = new File("/home/administrator/eclipse-workspace/BridgelabzProjectClinicManagement/src/files/" + temp + ".json");
 		try {
 			if (mfile.createNewFile()) {
 				createPatJson();
@@ -305,7 +305,7 @@ public class UtilityClinic {
 	public void accessExistingAppJson() throws FileNotFoundException {
 		System.out.println("Enter appointment file name:");
 		String temp = readString();
-		File mfile = new File("/home/administrator/eclipse-workspace/BridgelabzProject/src/files/" + temp + ".json");
+		File mfile = new File("/home/administrator/eclipse-workspace/BridgelabzProjectClinicManagement/src/files/" + temp + ".json");
 		try {
 			if (mfile.createNewFile()) {
 				createAppJson();
